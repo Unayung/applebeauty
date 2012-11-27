@@ -1,0 +1,19 @@
+body{
+  padding-top: 60px;
+  background-image: url(bg.jpeg);
+}
+
+ul.nav li.dropdown:hover .dropdown-menu{
+    display: block;    
+}
+
+.navbar .dropdown-menu {
+ margin-top: 0px;
+}
+
+.box{
+  width: 135px;
+  height: 245px;
+  border: 1px dashed #ccc;
+  margin-bottom: 20px;
+}

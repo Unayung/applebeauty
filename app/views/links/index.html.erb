@@ -1,0 +1,10 @@
+<% @links.each do |link| %>
+  <div class="span2 box">
+    <%= link_to(link.url) do %>
+    <%= image_tag(link.photo, :width => "135") %>
+    <% end %>
+  </div>
+<% end %>
+<div class="span12" align="center">
+<%= will_paginate @links %>
+</div>
