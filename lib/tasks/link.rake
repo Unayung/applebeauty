@@ -8,19 +8,26 @@ namespace :link do
 
     apple_url = 'http://www.appledaily.com.tw/appledaily/bloglist/headline/30342177/'
     i = 1
-    while i < 11
+    while i < 2
       list = Nokogiri::HTML(open(apple_url+i.to_s))
       list = list.css('div.abdominis')
-      list.css('li.fillup a').each do |link|
+      list.css('li.fillup').each do |link|
         
         l = Link.new
-        l.url = "http://www.appledaily.com.tw"+link['href']
-        l.title = link.content
+        l.url = "http://www.appledaily.com.tw"+link.css('a').attr('href')
+        l.title = link.css('time').text
         page_url = URI::encode(l.url)
         page = Nokogiri::HTML(open(page_url))
         image = page.css('div.articulum > figure > a')
-        l.remote_photo_url = image.attr('href').value
-        l.save
+        video = page.css('script').text.match(/http.*\.mp4/)
+        text = page.css('p#introid').inner_html
+        if video
+          l.clip = video[0]
+          l.detail = text
+          l.remote_photo_url = image.attr('href').value
+
+          l.save
+        end
         
       end
       i +=1

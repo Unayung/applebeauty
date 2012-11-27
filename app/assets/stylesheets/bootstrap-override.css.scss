@@ -12,8 +12,22 @@ ul.nav li.dropdown:hover .dropdown-menu{
 }
 
 .box{
-  width: 135px;
-  height: 245px;
-  border: 1px dashed #ccc;
+  width: 138px;
+  height: 270px;
+  #border: 1px dashed #ccc;
   margin-bottom: 20px;
+}
+
+.innerbox{
+  background-color: #fff;
+  img{
+    margin: 8px 0;
+  }
+}
+
+.label-title {
+  width: 130px;
+  text-align: center;
+  line-height: 18px !important;
+  font-style: normal !important;
 }

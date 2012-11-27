@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127075111) do
+ActiveRecord::Schema.define(:version => 20121127141327) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -20,7 +20,11 @@ ActiveRecord::Schema.define(:version => 20121127075111) do
     t.integer  "rate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "clip"
+    t.text     "detail"
   end
+
+  add_index "links", ["url"], :name => "index_links_on_url", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
