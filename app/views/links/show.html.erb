@@ -1,0 +1,19 @@
+<div class="span5" style="float:right;">
+  <%= image_tag(@link.photo) %>
+</div>
+<div class="span7">
+  <%= video_tag(@link.clip, :controls => true, :width => 540) %>
+</div>
+<div class="span7" style="float: left;">
+  <div class="well">
+  <%= @link.detail.html_safe %>
+  <br />
+  <%= link_to("原始頁面",@link.url, :target => "_blank", :class => "btn btn-info") %>
+  </div>
+</div>
+<div class="span12">
+<hr>
+</div>
+<div class="span12" align="center">
+  <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
+</div>
