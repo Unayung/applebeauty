@@ -60,6 +60,7 @@ GEM
       activesupport (>= 3.0)
       carrierwave (>= 0.5.7)
       mime-types
+    chronic (0.6.7)
     chunky_png (1.2.6)
     coderay (1.0.8)
     coffee-rails (3.2.2)
@@ -186,6 +187,9 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    whenever (0.8.0)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
     will_paginate (3.0.3)
 
 PLATFORMS
@@ -221,4 +225,5 @@ DEPENDENCIES
   simple_form (= 2.0.3)
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
+  whenever
   will_paginate (= 3.0.3)

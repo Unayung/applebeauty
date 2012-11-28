@@ -58,6 +58,7 @@ group :development do
 end
 
 group :production do
+  gem "whenever"
   #gem "newrelic_rpm"
 end
 
