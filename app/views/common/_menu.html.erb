@@ -6,23 +6,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-
           <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
-
+          <div class="social"> <%=  fb_like(Setting.domain) %>  </div>
           <%# render :partial => "common/search_form" %>
-
-   
-     
           <div class="nav-collapse">
-      
               <%# render_list :class => "nav" do |li|
                 li << link_to("Link-1","#")
                 li << link_to("Link-2","#")
                 li << link_to("Link-3","#")
               end %>
-              
               <%= render :partial => "common/user_nav"%>
-
           </div>
     </div>
   </div>

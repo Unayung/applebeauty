@@ -15,6 +15,7 @@
   <meta property="og:description" content="<%= page_description || SeoHelper.configuration.default_page_description %>"/>
   <meta property="og:image"   content="<%= page_image ||  SeoHelper.configuration.default_page_image %>"/>
   <meta property="og:url"   content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"/>
+  <meta property="og:type"   content="website"/>
   <%= og_fb_app_id(Setting.facebook_app_id) %>
 </head>
 
