@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class LinksController < ApplicationController
 
   def index
@@ -7,5 +8,11 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
+
+    set_page_description("蘋果我最美 - #{@link.title}")
+    set_page_keywords(@link.detail)
+    if @link.photo
+      set_page_image(Setting.domain + @link.photo.file.url)
+    end
   end
 end
