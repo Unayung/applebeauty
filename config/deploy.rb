@@ -2,6 +2,8 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano' #Using bundler with Capistrano
 require "rvm/capistrano"   # Load RVM's capistrano plugin.
+require "whenever/capistrano"
+
 set :stages, %w(staging production)
 set :default_stage, "production" 
 
@@ -16,6 +18,7 @@ set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 set :use_sudo, false
 set :rvm_ruby_string, '1.9.2'
+set :whenever_command, "bundle exec whenever"
 
 namespace :my_tasks do
   task :symlink, :roles => [:web] do
@@ -26,6 +29,7 @@ namespace :my_tasks do
       "#{shared_path}/config/database.yml"   => "#{release_path}/config/database.yml",
       "#{shared_path}/config/config.yml"    => "#{release_path}/config/config.yml",
       "#{shared_path}/uploads"              => "#{release_path}/public/uploads",
+      "#{shared_path}/config/schedule.rb"   => "#{release_path}/config/schedule.rb",
     #  "#{shared_path}/db/sphinx"            => "#{release_path}/db/sphinx"
     #  "#{shared_path}/config/newrelic.yml"  => "#{release_path}/config/newrelic.yml",
     #  "#{shared_path}/config/redis.yml"     => "#{release_path}/config/redis.yml",
