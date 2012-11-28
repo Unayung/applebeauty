@@ -97,7 +97,6 @@ end
 
 after "deploy:finalize_update", "my_tasks:symlink"
 after :deploy, "deploy:cleanup"
-require "whenever/capistrano"
 
 #after "deploy:restart", "sphinx:rebuild"
 #after "deploy:restart", "sphinx:restart"
