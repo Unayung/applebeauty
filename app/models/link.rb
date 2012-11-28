@@ -1,4 +1,6 @@
 class Link < ActiveRecord::Base
   # attr_accessible :title, :body
-    mount_uploader :photo , PhotoUploader
+  has_one :photo
+
+  scope :recent, order("title DESC", :limit => "11")
 end

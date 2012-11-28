@@ -4,7 +4,7 @@
       <div class="innerbox">
         <i class="label label-info label-large label-title"><%= link.title %></i>
         <div align="center">
-        <%= image_tag(link.photo, :width => "125") %>
+        <%= image_tag(link.photo.file.tiny) %>
         </div>
       </div>
     <% end %>

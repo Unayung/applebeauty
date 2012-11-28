@@ -1,5 +1,5 @@
 <div class="span5" style="float:right;">
-  <%= image_tag(@link.photo) %>
+  <%= image_tag(@link.photo.file) %>
 </div>
 <div class="span7">
   <%= video_tag(@link.clip, :controls => true, :width => 540) %>

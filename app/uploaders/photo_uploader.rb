@@ -51,12 +51,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
 
 
-  # process :store_meta
+  process :store_meta
   
-  # version :tiny do
-  #    process :resize_to_fill => [50, 50]
-  #    process :store_meta
-  # end
+  version :tiny do
+    process :resize_to_fill => [125, 200]
+    process :store_meta
+  end
   
   # version :pin do 
   #    process :resize_to_fit => [90, 120]
