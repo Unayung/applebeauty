@@ -2,7 +2,6 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano' #Using bundler with Capistrano
 require "rvm/capistrano"   # Load RVM's capistrano plugin.
-require "whenever/capistrano"
 
 set :stages, %w(staging production)
 set :default_stage, "production" 
@@ -98,5 +97,7 @@ end
 
 after "deploy:finalize_update", "my_tasks:symlink"
 after :deploy, "deploy:cleanup"
+require "whenever/capistrano"
+
 #after "deploy:restart", "sphinx:rebuild"
 #after "deploy:restart", "sphinx:restart"
