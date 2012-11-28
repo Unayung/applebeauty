@@ -46,7 +46,7 @@ group :assets do
   gem "compass-rails"
 end
 
-group :development do 
+group :development do
   gem "capistrano"
   gem "capistrano-ext"
   gem "cape"
