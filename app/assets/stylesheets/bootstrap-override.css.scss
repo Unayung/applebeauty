@@ -31,3 +31,11 @@ ul.nav li.dropdown:hover .dropdown-menu{
   line-height: 18px !important;
   font-style: normal !important;
 }
+.navbar-inner{
+  background-color: transparent !important;
+  background-image: none !important;
+}
+.navbar .brand{
+  color: #000 !important;
+  font-size: 32px;
+}

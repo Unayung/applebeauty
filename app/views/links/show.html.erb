@@ -1,3 +1,6 @@
+<div class="span12" align="center">
+  <h1><%= @link.title %></h1>
+</div>
 <div class="span5" style="float:right;">
   <%= image_tag(@link.photo.file) %>
 </div>
@@ -6,9 +9,11 @@
 </div>
 <div class="span7" style="float: left;">
   <div class="well">
-  <%= @link.detail.html_safe %>
-  <br />
-  <%= link_to("原始頁面",@link.url, :target => "_blank", :class => "btn btn-info") %>
+    <%= link_to(content_tag(:i,"",:class =>"icon-facetime-video")+" 下載播放", @link.clip, :class => "btn btn-warning")%>
+    <%= link_to(content_tag(:i,"",:class =>"icon-file")+" 原始頁面",@link.url, :target => "_blank", :class => "btn btn-info") %>
+    <hr>
+    <%= @link.detail.html_safe %>
+    <br />
   </div>
 </div>
 <div class="span12">
@@ -16,4 +21,10 @@
 </div>
 <div class="span12" align="center">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
+</div>
+<div style="position: fixed; left: 100px; top: 330px;">
+  <%= link_to(image_tag("/left_arrow.png"), @previous) %>
+</div>
+<div style="position: fixed; right: 100px; top: 330px;">
+  <%= link_to(image_tag("/right_arrow.png"), @next) %>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127174818) do
+ActiveRecord::Schema.define(:version => 20121129043320) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(:version => 20121127174818) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "links", ["title"], :name => "index_links_on_title"
   add_index "links", ["url"], :name => "index_links_on_url", :unique => true
 
   create_table "photos", :force => true do |t|
-    t.string   "file"
     t.integer  "link_id"
+    t.string   "file"
     t.string   "file_width"
     t.string   "file_height"
     t.string   "file_image_size"

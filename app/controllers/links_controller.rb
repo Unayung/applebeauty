@@ -14,5 +14,8 @@ class LinksController < ApplicationController
     if @link.photo
       set_page_image(Setting.domain + @link.photo.file.url)
     end
+
+    @next = @link.next
+    @previous = @link.previous
   end
 end
