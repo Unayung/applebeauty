@@ -1,5 +1,5 @@
 <div class="span12" align="center">
-  <h1><%= @link.title %></h1>
+  <h2><%= @link.title %></h2>
 </div>
 <div class="span5" style="float:right;">
   <%= image_tag(@link.photo.file) %>
@@ -16,12 +16,13 @@
     <br />
   </div>
 </div>
-<div class="span12">
-<hr>
-</div>
+
+<div class="span12"><hr></div>
+
 <div class="span12" align="center">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
 </div>
+
 <div style="position: fixed; left: 100px; top: 330px;">
   <%= link_to(image_tag("/left_arrow.png"), @previous) %>
 </div>
