@@ -49,6 +49,7 @@ end
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
+  gem "rvm-capistrano"
   gem "cape"
   gem "magic_encoding"
   gem "annotate"
