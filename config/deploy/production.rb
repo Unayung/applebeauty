@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 set :application, "applebeauty" 
-set :domain, "ab.youngvoice.cc" 
+set :domain, "ab.fbnai.com" 
 set :repository, "git@github.com:Unayung/applebeauty.git" # your ssh way in github.
 set :deploy_to, "/home/apps/applebeauty" 
 role :app, domain
@@ -15,7 +15,7 @@ set :scm_verbose, true
 set :use_sudo, false
 set :user, "apps" 
 set :group, "apps" 
-default_environment["PATH"] = "/home/apps/.rvm/gems/ruby-1.9.2-p320/bin:/home/apps/.rvm/gems/ruby-1.9.2-p320@global/bin:/home/apps/.rvm/rubies/ruby-1.9.2-p320/bin:/home/apps/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games" 
+default_environment["PATH"] = "/home/apps/.rvm/gems/ruby-1.9.3-p327/bin:/home/apps/.rvm/gems/ruby-1.9.3-p327@global/bin:/home/apps/.rvm/rubies/ruby-1.9.3-p327/bin:/home/apps/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 namespace :deploy do
   desc "restart" 
   task :restart do
