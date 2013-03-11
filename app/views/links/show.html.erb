@@ -1,5 +1,8 @@
-<div class="span12" align="center">
-  <h2><%= @link.title %></h2>
+<div class="span12 label label-inverse" align="center">
+  <h2><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h2>
+</div>
+<div class="span12">
+  <hr>
 </div>
 <div class="span5" style="float:right;">
   <%= image_tag(@link.photo.file) %>

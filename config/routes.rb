@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Applebeauty::Application.routes.draw do
   devise_for :users
 

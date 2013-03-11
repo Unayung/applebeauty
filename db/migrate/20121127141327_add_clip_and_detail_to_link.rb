@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddClipAndDetailToLink < ActiveRecord::Migration
   def change
     add_column :links, :clip, :string
