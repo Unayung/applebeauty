@@ -1,5 +1,3 @@
- <%= form_tag "/search", :class => "navbar-search", :method => :get do %>
-   <span class="nav-toolbar-icon nav-toolbar-icon-search"></span>
-   <input type="text" name="q" class="search-query " value="<%= @query_string %>" placeholder="<%= @query_string ||   "Search" %>" />
-      
+ <%= search_form_for @search, :url => links_path, :class => "navbar-search", :method => :get do |f|%>
+   <input type="text" name="q[detail_cont]" class="search-query " value="<%= @query_string %>" placeholder="<%= @query_string ||   "Search ex. 咩咩" %>" />
 <% end %>

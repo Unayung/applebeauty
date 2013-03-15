@@ -11,6 +11,7 @@
           <%= link_to(image_tag("/right_arrow.png", :style => "height:30px;"), @next, :class => "btn btn-small") %>
         </div>
       <% end %>
+      <div class="social"><%=  fb_like(Setting.domain) %></div>
     </div>
   </div>
   <%= yield :submenu %>

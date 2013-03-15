@@ -2,8 +2,15 @@
 class LinksController < ApplicationController
 
   def index
-    @links = Link.recent.paginate(:page => params[:page], :per_page => 18)
-    #@links = @links.order(:title, :limit => "11")
+
+    @search = Link.ransack(params[:q])
+
+    if params[:q].present?
+      @query_string = params[:q][:detail_cont]
+      @links = @search.result.paginate(:per_page => 18, :page => params[:page])
+    else
+      @links = Link.recent.paginate(:per_page => 18, :page => params[:page])
+    end
   end
 
   def show
@@ -17,5 +24,15 @@ class LinksController < ApplicationController
 
     @next = @link.next
     @previous = @link.previous
+  end
+
+  def search
+    @search = Link.ransack(params[:q])
+
+    if params[:q].present?
+      @link = @search.result.paginate(:per_page => 18, :page => params[:page])
+    else
+      @link = Link.recent.paginate(:per_page => 18, :page => params[:page])
+    end
   end
 end

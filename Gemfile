@@ -42,6 +42,7 @@ gem "high_voltage"
 
 gem "airbrake"
 gem "turbo-sprockets-rails3"
+gem "ransack"
 
 group :assets do
   gem "compass-rails"
