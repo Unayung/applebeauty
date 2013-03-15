@@ -12,6 +12,8 @@ module LinksHelper
       tmp = link.detail.split("本名：").second
     elsif link.detail.index("姓名：")
       tmp = link.detail.split("姓名：").second
+    else
+      tmp = "神祕路人<br"
     end
 
     name = tmp.split("<br").first

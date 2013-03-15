@@ -4,7 +4,7 @@ body{
 }
 
 ul.nav li.dropdown:hover .dropdown-menu{
-    display: block;    
+    display: block;
 }
 
 .navbar .dropdown-menu {
@@ -41,4 +41,10 @@ ul.nav li.dropdown:hover .dropdown-menu{
 .navbar .brand{
   color: #000 !important;
   font-size: 32px;
+}
+
+.brand-fix{
+  @extend .brand;
+
+  margin-left: 80px !important;
 }

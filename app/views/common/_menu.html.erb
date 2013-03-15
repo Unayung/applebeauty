@@ -1,25 +1,17 @@
-<div class="navbar navbar-fixed-top ">
-      <div class="navbar-inner top ">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
-          <div class="social"> <%=  fb_like(Setting.domain) %>  </div>
-          <%# render :partial => "common/search_form" %>
-          <div class="nav-collapse">
-              <%# render_list :class => "nav" do |li|
-                li << link_to("Link-1","#")
-                li << link_to("Link-2","#")
-                li << link_to("Link-3","#")
-              end %>
-              <%= render :partial => "common/user_nav"%>
-          </div>
+<div class="navbar navbar-fixed-top white-box" style="opacity:0.7;">
+  <div class="navbar-inner top ">
+    <div class="container" align="center">
+      <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
+      <% if @link.present? %>
+        <div class="brand-fix"><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></div>
+        <div style="position: absolute; right: 250px; top: 0px;">
+          <%= link_to(image_tag("/left_arrow.png", :style => "height:30px;"), @previous, :class => "btn btn-small") %>
+        </div>
+        <div style="position: absolute; right: 200px; top: 0px;">
+          <%= link_to(image_tag("/right_arrow.png", :style => "height:30px;"), @next, :class => "btn btn-small") %>
+        </div>
+      <% end %>
     </div>
   </div>
-
   <%= yield :submenu %>
-
 </div>

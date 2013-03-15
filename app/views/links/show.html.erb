@@ -1,17 +1,14 @@
-<div class="span12 label label-inverse" align="center">
-  <h2><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h2>
-</div>
-<div class="span12">
-  <hr>
-</div>
 <div class="span5" style="float:right;">
+  <div class="white-box" align="center">
   <%= image_tag(@link.photo.file) %>
+  </div>
 </div>
 <div class="span7">
-  <%= video_tag(@link.clip, :controls => true, :width => 540) %>
-</div>
-<div class="span7" style="float: left;">
-  <div class="well">
+  <div class="white-box">
+  <%= video_tag(@link.clip, :controls => true, :width => 530) %>
+  </div>
+  <br>
+  <div class="white-box">
     <%= link_to(content_tag(:i,"",:class =>"icon-facetime-video")+" 下載播放", @link.clip, :class => "btn btn-warning")%>
     <%= link_to(content_tag(:i,"",:class =>"icon-file")+" 原始頁面",@link.url, :target => "_blank", :class => "btn btn-info") %>
     <hr>
@@ -19,16 +16,9 @@
     <br />
   </div>
 </div>
-
 <div class="span12"><hr></div>
 
 <div class="span12" align="center">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
 </div>
 
-<div style="position: fixed; left: 100px; top: 330px;">
-  <%= link_to(image_tag("/left_arrow.png"), @previous) %>
-</div>
-<div style="position: fixed; right: 100px; top: 330px;">
-  <%= link_to(image_tag("/right_arrow.png"), @next) %>
-</div>
