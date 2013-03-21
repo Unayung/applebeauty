@@ -4,6 +4,12 @@ Applebeauty::Application.routes.draw do
 
   #root :to => 'high_voltage/pages#show', :id => 'welcome'
 
-  resources :links
+  resources :links do
+    member do
+      get "like"
+      get "dislike"
+    end
+  end
+
   root :to => 'links#index'
 end

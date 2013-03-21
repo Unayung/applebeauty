@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class LinksController < ApplicationController
 
+  before_filter :find_voter, :only => [:like, :dislike, :show]
   def index
 
     @search = Link.ransack(params[:q])
@@ -34,5 +35,32 @@ class LinksController < ApplicationController
     else
       @link = Link.recent.paginate(:per_page => 18, :page => params[:page])
     end
+  end
+
+  def like
+    @link = Link.find(params[:id])
+    if @voter.voted_on?(@link)
+      redirect_to(link_path(@link), :notice => "你投過票囉~~")
+    else
+      @voter.likes(@link)
+      redirect_to(link_path(@link), :notice => "感謝你神聖一票，已列入統計")
+    end
+  end
+
+  def dislike
+    @link = Link.find(params[:id])
+    if @voter.voted_on?(@link)
+      redirect_to(link_path(@link), :notice => "你投過票囉~~")
+    else
+      @voter.dislikes(@link)
+      redirect_to(link_path(@link), :notice => "感謝你神聖一票，已列入統計")
+    end
+  end
+
+  protected
+
+  def find_voter
+    session[:voting_id] = request.remote_ip
+    @voter = Session.find_or_create_by_ip(session[:voting_id])
   end
 end
