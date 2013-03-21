@@ -7,6 +7,8 @@
   <div class="white-box">
   <%= video_tag(@link.clip, :controls => true, :width => 530) %>
   </div>
+</div>
+<div class="span4">
   <br>
   <div class="white-box">
     <%= link_to(content_tag(:i,"",:class =>"icon-facetime-video")+" 下載播放", @link.clip, :class => "btn btn-warning")%>
@@ -14,6 +16,13 @@
     <hr>
     <%= @link.detail.html_safe %>
     <br />
+  </div>
+</div>
+<div class="span3">
+  <br>
+  <div class="white-box">
+  <%= link_to("這個好正", "", :class => "btn") %>
+  <%= link_to("不要鬧了", "", :class => "btn") %>
   </div>
 </div>
 <div class="span12"><hr></div>
