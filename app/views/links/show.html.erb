@@ -55,7 +55,7 @@
 </div>
 <%= content_for :javascripts do %>
   <%= flowplayer_for :video, '/flowplayer.swf', 'jquery' do |player| %>
-    <% player.playlist [{:url => @link.clip, :autoPlay => false, :autoBuffering => true }] %>
+    <% player.playlist [{:url => @link.clip, :autoPlay => false, :autoBuffering => false }] %>
       <% player.onLoad do %>
         <% 'this.unmute();' %>
       <% end %>
