@@ -7,7 +7,9 @@
   <div class="row">
     <div class="span7">
       <div class="white-box">
-      <%= video_tag(@link.clip, :controls => true, :width => 530) %>
+        <div id='video' style='display:block;width:530px;height:350px;'>
+        </div>
+      <%# video_tag(@link.clip, :controls => true, :width => 530) %>
       </div>
     </div>
   </div>
@@ -52,4 +54,11 @@
 <div class="span12" align="center">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
 </div>
-
+<%= content_for :javascripts do %>
+  <%= flowplayer_for :video, '/flowplayer.swf', 'jquery' do |player| %>
+    <% player.playlist [{:url => @link.clip, :autoPlay => false, :autoBuffering => true }] %>
+      <% player.onLoad do %>
+        <% 'this.unmute();' %>
+      <% end %>
+  <% end %>
+<% end %>

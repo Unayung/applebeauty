@@ -87,6 +87,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    flowplayer (0.1.3)
+      json
     fssm (0.2.10)
     high_voltage (1.2.2)
     highline (1.6.16)
@@ -215,6 +217,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   devise
+  flowplayer (= 0.1.3)
   high_voltage
   jquery-rails
   magic_encoding
