@@ -18,7 +18,9 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @link.rate = @link.likes.size
     @link.save
-    set_page_description("蘋果我最美 - #{@link.title}")
+
+    set_page_title("#{@link.title}")
+    set_page_description("#{@link.detail}")
     set_page_keywords(@link.detail)
     if @link.photo
       set_page_image(Setting.domain + @link.photo.file.url)
