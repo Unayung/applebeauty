@@ -1,22 +1,26 @@
-<div class="span5" style="float:right;">
+<div class="span5">
   <div class="white-box" align="center">
   <%= image_tag(@link.photo.file) %>
   </div>
 </div>
 <div class="span7">
-  <div class="white-box">
-  <%= video_tag(@link.clip, :controls => true, :width => 530) %>
+  <div class="row">
+    <div class="span7">
+      <div class="white-box">
+      <%= video_tag(@link.clip, :controls => true, :width => 530) %>
+      </div>
+    </div>
   </div>
-</div>
-<div class="span4">
-  <br>
-  <div class="white-box">
-    <h3>基本資料</h3>
-    <%= @link.detail.html_safe %>
-    <br />
-  </div>
-</div>
-<div class="span3">
+  <div class="row">
+    <div class="span4">
+      <br>
+      <div class="white-box detail">
+        <h3>基本資料</h3>
+        <%= @link.detail.html_safe %>
+        <br />
+      </div>
+    </div>
+    <div class="span3">
   <br>
   <div class="white-box" align="center">
     <h3>鄉民統計</h3>
@@ -32,6 +36,17 @@
     <br>
   </div>
 </div>
+<div class="span3">
+  <br>
+  <div class="white-box nav-button" align="center">
+    <%= render_next_link %>
+    <%= render_prev_link %>
+  </div>
+</div>
+  </div>
+</div>
+
+
 <div class="span12"><hr></div>
 
 <div class="span12" align="center">

@@ -4,10 +4,6 @@
       <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
       <% if @link.present? %>
         <div class="brand-fix"><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></div>
-        <div style="float:right;">
-          <%= link_to(image_tag("/left_arrow.png", :style => "height:30px;"), @previous, :class => "btn btn-small") %>
-          <%= link_to(image_tag("/right_arrow.png", :style => "height:30px;"), @next, :class => "btn btn-small") %>
-        </div>
       <% end %>
       <div class="social"><%=  fb_like(Setting.domain) %></div>
     </div>
