@@ -6,7 +6,7 @@
         <div class="brand-fix"><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></div>
       <% else %>
         <div class="nav-collapse">
-        <%= render_list :class => "nav" do |li|
+        <%# render_list :class => "nav" do |li|
           li << link_to("本週最優",best_of_the_week_links_path)
           li << link_to("本月最優",best_of_the_month_links_path)
         end %>
