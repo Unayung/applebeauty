@@ -16,7 +16,7 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
-
+    @link.rate = @link.likes.size
     set_page_description("蘋果我最美 - #{@link.title}")
     set_page_keywords(@link.detail)
     if @link.photo
@@ -43,13 +43,6 @@ class LinksController < ApplicationController
       redirect_to(link_path(@link), :notice => "你投過票囉~~")
     else
       @voter.likes(@link)
-      # if @link.rate.present? && @link.rate > @link.votes.size
-      #   @link.rate += 1
-      #   @link.save
-      # else
-        @link.rate = @link.votes.size
-        @link.save
-      # end
       redirect_to(link_path(@link), :notice => "感謝你神聖一票，已列入統計")
     end
   end
