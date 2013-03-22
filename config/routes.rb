@@ -5,6 +5,10 @@ Applebeauty::Application.routes.draw do
   #root :to => 'high_voltage/pages#show', :id => 'welcome'
 
   resources :links do
+    collection do
+      get "best_of_the_week"
+      get "best_of_the_month"
+    end
     member do
       get "like"
       get "dislike"

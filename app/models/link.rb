@@ -19,4 +19,12 @@ class Link < ActiveRecord::Base
     next_id = query[index+1] || query.first
     return query.find(next_id)
   end
+
+  def self.best_of_the_month
+    where("created_at between ? and ?", Date.today.beginning_of_month, Date.today.end_of_month).order("rate DESC").limit(10)
+  end
+
+  def self.best_of_the_week
+    where("created_at between ? and ?", Date.today.beginning_of_week, Date.today.end_of_week).order("rate DESC").limit(10)
+  end
 end

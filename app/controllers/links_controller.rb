@@ -43,6 +43,13 @@ class LinksController < ApplicationController
       redirect_to(link_path(@link), :notice => "你投過票囉~~")
     else
       @voter.likes(@link)
+      # if @link.rate.present? && @link.rate > @link.votes.size
+      #   @link.rate += 1
+      #   @link.save
+      # else
+        @link.rate = @link.votes.size
+        @link.save
+      # end
       redirect_to(link_path(@link), :notice => "感謝你神聖一票，已列入統計")
     end
   end
@@ -55,6 +62,14 @@ class LinksController < ApplicationController
       @voter.dislikes(@link)
       redirect_to(link_path(@link), :notice => "感謝你神聖一票，已列入統計")
     end
+  end
+
+  def best_of_the_week
+    @links = Link.best_of_the_week
+  end
+
+  def best_of_the_month
+    @links = Link.best_of_the_month
   end
 
   protected
