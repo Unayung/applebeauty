@@ -5,7 +5,7 @@
       <% if @link.present? %>
         <div class="brand-fix"><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></div>
       <% end %>
-      <div class="social"><%=  fb_like(Setting.domain) %></div>
+      <div class="social"><%=  fb_like(request.url) %></div>
     </div>
   </div>
   <%= yield :submenu %>
