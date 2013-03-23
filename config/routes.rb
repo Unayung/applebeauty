@@ -10,8 +10,8 @@ Applebeauty::Application.routes.draw do
       get "best_of_the_month"
     end
     member do
-      get "like"
-      get "dislike"
+      post "like"
+      post "dislike"
     end
   end
 
