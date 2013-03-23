@@ -2,6 +2,9 @@
 class LinksController < ApplicationController
 
   before_filter :find_voter, :only => [:like, :dislike, :show]
+
+  include ActionView::Helpers::SanitizeHelper
+
   def index
 
     @search = Link.ransack(params[:q])
@@ -20,7 +23,7 @@ class LinksController < ApplicationController
     @link.save
 
     set_page_title("#{@link.title}")
-    set_page_description("#{@link.detail}")
+    set_page_description(strip_tags("#{@link.detail}"))
     set_page_keywords(@link.detail)
     if @link.photo
       set_page_image(Setting.domain + @link.photo.file.url)
