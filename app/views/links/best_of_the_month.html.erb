@@ -1,27 +1,27 @@
 <% @links.each_with_index do |link, i| %>
-    <div class="span6 offset3">
-      <div class="white-panel">
-        <div class="row">
-          <div class="span3">
-            <%= link_to(link_path(link)) do %>
+  <div class="span6 offset3">
+    <div class="white-panel">
+      <div class="row">
+        <div class="span3">
+          <%= link_to(link_path(link)) do %>
             <%= image_tag(link.photo.file, :width => 180) %>
-            <% end %>
+          <% end %>
+        </div>
+        <div class="span3">
+          <div class="github-fork-ribbon-wrapper right">
+            <div class="github-fork-ribbon"><a href="">本月第 <%= i+1 %> 名</a></div>
           </div>
-          <div class="span3">
-            <div class="github-fork-ribbon-wrapper right">
-              <div class="github-fork-ribbon"><a href="">本月第 <%= i+1 %> 名</a></div>
-            </div>
-            <br>
-            <h3><%= render_link_girl_name(link) %></h3>
-            <div>
-              <h4 class="red">總得票數 <%= link.likes.size %></h4>
-            </div>
-            <div>
-              <%= link.detail.html_safe %>
-            </div>
+          <br>
+          <h3><%= render_link_girl_name(link) %></h3>
+          <div>
+            <h4 class="red">總得票數 <%= link.likes.size %></h4>
+          </div>
+          <div>
+            <%= link.detail.html_safe %>
           </div>
         </div>
       </div>
-      <br>
     </div>
+    <br>
+  </div>
 <% end %>
