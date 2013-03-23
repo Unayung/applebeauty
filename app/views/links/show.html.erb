@@ -1,3 +1,9 @@
+<div class="span12">
+  <div class="white-box" align="center">
+    <h4><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h4>
+  </div>
+  <br>
+</div>
 <div class="span5">
   <div class="white-box" align="center">
   <%= image_tag(@link.photo.file) %>
@@ -25,14 +31,18 @@
   <br>
   <div class="white-box" align="center">
     <h3>鄉民統計</h3>
-    <% if @voter.voted_on?(@link) %>
-    覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票
-    <br>
-    覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票
-    <% else %>
-    <%= link_to("這個好正", like_link_path(@link), :class => "btn btn-danger") %>
-    <%= link_to("不要鬧了", dislike_link_path(@link), :class => "btn btn-inverse") %>
-    <% end %>
+    <div class="vote-result">
+      <% if @voter.voted_on?(@link) %>
+      <div class="votes">
+      覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票
+      <br>
+      覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票
+      </div>
+      <% else %>
+      <%= link_to("這個好正", like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
+      <%= link_to("不要鬧了", dislike_link_path(@link), :class => "btn btn-inverse", :remote => true, :method => :post) %>
+      <% end %>
+    </div>
     <br>
     <br>
   </div>
