@@ -27,7 +27,6 @@
           <%= render :partial => "vote_box" %>
         </div>
         <br>
-        <br>
       </div>
     </div>
     <div class="span3">
@@ -53,4 +52,11 @@
         <% 'this.unmute();' %>
       <% end %>
   <% end %>
+<% end %>
+<%= content_for :javascripts do %>
+<script type="text/javascript">
+  $("#check-result").click(function(){
+    $("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票</div>');
+  })
+</script>
 <% end %>

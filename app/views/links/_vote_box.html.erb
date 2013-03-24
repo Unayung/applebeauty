@@ -7,4 +7,6 @@
       <% else %>
       <%= link_to("她，我可以", like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
       <%= link_to("不要鬧了!!", dislike_link_path(@link), :class => "btn btn-inverse", :remote => true, :method => :post) %>
+      <br><br>
+      <span id="check-result" class="btn btn-info">沒意見，看結果</span>
       <% end %>

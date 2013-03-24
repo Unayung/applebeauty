@@ -70,6 +70,12 @@ input.search-query {
 span.girl-name{
   font-size: 20px;
 }
+
+#check-result {
+  width: 164px;
+  position: relative;
+  left: -2px;
+}
 // github-ribbon
 /* Left will inherit from right (so we don't need to duplicate code */
 .github-fork-ribbon {
