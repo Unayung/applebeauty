@@ -32,4 +32,9 @@ class Link < ActiveRecord::Base
   def self.worst_of_all
     where("rate < 0").order("rate asc").limit(5)
   end
+
+  def calculate_rate
+    self.rate = self.likes.size - self.dislikes.size
+    self.save
+  end
 end

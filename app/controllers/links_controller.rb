@@ -18,17 +18,11 @@ class LinksController < ApplicationController
   end
 
   def show
-
-    @link.rate = @link.likes.size - @link.dislikes.size
-    @link.save
-
+    @link.calculate_rate
     set_page_title("#{@link.title}")
     set_page_description(strip_tags("#{@link.detail}"))
     set_page_keywords(@link.detail)
-
-    if @link.photos
-      set_page_image(Setting.domain + @link.photos.first.file.url)
-    end
+    set_page_image(Setting.domain + @link.photos.first.file.url) if @link.photos
 
     @next = @link.next
     @previous = @link.previous
@@ -39,8 +33,7 @@ class LinksController < ApplicationController
       flash[:notice] = "您投過票囉"
     else
       @voter.likes(@link)
-      @link.rate = @link.likes.size - @link.dislikes.size
-      @link.save
+      @link.calculate_rate
       flash[:notice] = "感謝您神聖一票，已列入統計"
     end
   end
@@ -50,8 +43,7 @@ class LinksController < ApplicationController
       flash[:notice] = "您投過票囉"
     else
       @voter.dislikes(@link)
-      @link.rate = @link.likes.size - @link.dislikes.size
-      @link.save
+      @link.calculate_rate
       flash[:notice] = "感謝您神聖一票，已列入統計"
     end
   end
