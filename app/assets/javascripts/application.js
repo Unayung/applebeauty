@@ -2,7 +2,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery-fileupload
 //= require twitter/bootstrap/alert
+//= require colorbox-rails
 
 function dismissAlertAfterTime(timespan) {
   $('.alert').each(function(i, e) {

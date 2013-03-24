@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  def admin?
+    return true if Setting.admin_emails.include?(self.email)
+    return false
+  end
 end
