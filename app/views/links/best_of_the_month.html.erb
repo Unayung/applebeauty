@@ -4,7 +4,7 @@
       <div class="row">
         <div class="span3">
           <%= link_to(link_path(link)) do %>
-            <%= image_tag(link.photo.file, :width => 180) %>
+            <%= image_tag(link.photos.first.file, :width => 180) %>
           <% end %>
         </div>
         <div class="span3">
@@ -12,9 +12,9 @@
             <div class="github-fork-ribbon"><a href="">本月第 <%= i+1 %> 名</a></div>
           </div>
           <br>
-          <h3><%= render_link_girl_name(link) %></h3>
+          <span class="girl-name"><%= render_link_girl_name(link) %></span>
           <div>
-            <h4 class="red">總得票數 <%= link.likes.size %></h4>
+            <span class="red">好評指數 <%= link.likes.size %></span>
           </div>
           <div>
             <%= link.detail.html_safe %>

@@ -1,13 +1,9 @@
 <div class="span12">
-  <div class="white-box" align="center">
-    <h4><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h4>
-  </div>
+  <%= render partial: "title_box" %>
   <br>
 </div>
 <div class="span5">
-  <div class="white-box" align="center">
-  <%= image_tag(@link.photo.file) %>
-  </div>
+  <%= render partial: "image_box" %>
 </div>
 <div class="span7">
   <div class="row">
@@ -21,45 +17,32 @@
   <div class="row">
     <div class="span4">
       <br>
-      <div class="white-box detail">
-        <h3>基本資料</h3>
-        <%= @link.detail.html_safe %>
-        <br />
+      <%= render :partial => "info_box" %>
+    </div>
+    <div class="span3">
+      <br>
+      <div class="white-box" align="center">
+        <h3>鄉民統計</h3>
+        <div class="vote-result">
+          <%= render :partial => "vote_box" %>
+        </div>
+        <br>
+        <br>
       </div>
     </div>
     <div class="span3">
-  <br>
-  <div class="white-box" align="center">
-    <h3>鄉民統計</h3>
-    <div class="vote-result">
-      <% if @voter.voted_on?(@link) %>
-      <div class="votes">
-      覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票
       <br>
-      覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票
+      <div class="white-box nav-button" align="center">
+        <%= render_next_link %>
+        <%= render_prev_link %>
       </div>
-      <% else %>
-      <%= link_to("她，我可以", like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
-      <%= link_to("不要鬧了!!", dislike_link_path(@link), :class => "btn btn-inverse", :remote => true, :method => :post) %>
-      <% end %>
     </div>
-    <br>
-    <br>
   </div>
 </div>
-<div class="span3">
-  <br>
-  <div class="white-box nav-button" align="center">
-    <%= render_next_link %>
-    <%= render_prev_link %>
-  </div>
-</div>
-  </div>
-</div>
-
-
 <div class="span12"><hr></div>
-
+<div class="span12">
+  <%= render partial: "complain" %>
+</div>
 <div class="span12" align="center">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
 </div>

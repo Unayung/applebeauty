@@ -1,0 +1,17 @@
+<div class="white-box" align="center">
+  <h2>平反專區</h2>
+  <% if @link.photos.size > 1 %>
+    <% @link.photos.each do |photo| %>
+      
+      <%= link_to(photo.file.url, :data => { :colorbox => true, :colorbox_height => "700px" }) do %>
+        <%= image_tag(photo.file.tiny) %>
+      <% end %>
+
+    <% end %>
+  <% end %>
+  <% if current_user && current_user.admin? %>
+  <%= link_to("Upload photo", new_link_photo_path(@link), :class => "btn btn-info") %>
+  <% end %>
+  <hr>
+  <p>如果您看過這位正妹其它照片，深深認為她是被攝影師陷害的話，請 email 至 <%= mail_to("youngvoice.basement@gmail.com") %></p>
+</div>
