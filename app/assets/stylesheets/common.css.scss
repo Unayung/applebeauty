@@ -76,6 +76,10 @@ span.girl-name{
   position: relative;
   left: -2px;
 }
+
+.complained {
+  background-color: red !important;
+}
 // github-ribbon
 /* Left will inherit from right (so we don't need to duplicate code */
 .github-fork-ribbon {
