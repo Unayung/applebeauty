@@ -7,10 +7,11 @@
         <%= render_list :class => "nav" do |li|
           li << link_to("本週最優",best_of_the_week_links_path)
           li << link_to("本月最優",best_of_the_month_links_path)
+          li << link_to("賣鬧專區", worst_of_all_links_path)
         end %>
       </div>
       <div class="social"><%=  fb_like(request.url) %></div>
+      <%# render :partial => "common/user_nav" %>
     </div>
   </div>
-  <%= yield :submenu %>
 </div>

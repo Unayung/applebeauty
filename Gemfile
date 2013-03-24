@@ -43,10 +43,13 @@ gem "high_voltage"
 
 gem "airbrake"
 gem "turbo-sprockets-rails3"
+
 gem "ransack"
 
 group :assets do
   gem "compass-rails"
+  gem "jquery-fileupload-rails", "= 0.4.0"
+  gem "colorbox-rails"
 end
 
 group :development do

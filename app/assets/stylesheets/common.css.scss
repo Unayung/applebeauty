@@ -7,7 +7,7 @@
    float:right;
    width: 90px;
    padding: 5px;
-   padding-top: 13px;
+   padding-top: 9px;
    border-right: none;
 }
 .social > div {
@@ -61,6 +61,14 @@
   position: absolute;
   right: 50px;
   top:100px;
+}
+
+input.search-query {
+  width: 150px !important;
+}
+
+span.girl-name{
+  font-size: 20px;
 }
 // github-ribbon
 /* Left will inherit from right (so we don't need to duplicate code */

@@ -1,0 +1,5 @@
+<div class="white-box" align="center">
+<%= link_to(@link.photos.first.file.url, :data => { :colorbox => true }) do %>
+<%= image_tag(@link.photos.first.file) %>
+<% end %>
+</div>

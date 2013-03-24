@@ -1,13 +1,16 @@
 # -*- encoding : utf-8 -*-
 Applebeauty::Application.routes.draw do
-  devise_for :users
-
+  devise_for :users do
+    get "logout" => "devise/sessions#destroy"
+  end
   #root :to => 'high_voltage/pages#show', :id => 'welcome'
 
   resources :links do
+    resources :photos
     collection do
       get "best_of_the_week"
       get "best_of_the_month"
+      get "worst_of_all"
     end
     member do
       post "like"
