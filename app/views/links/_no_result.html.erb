@@ -1,0 +1,28 @@
+  <div class="white-box" align="center">
+    <br>
+    <p>目前暫無統計結果，可能是投票數不足。</p>
+    <p>不如看看這三位吧。</p>
+    <br>
+    <div class="row">
+      <div class="span6 offset1">
+        <div class="row">
+        <% @random_links.each do |link| %>
+          <div class="span2 box">
+            <%= link_to(link) do %>
+              <div class="innerbox">
+                <% if link.photos.size > 1 %>
+                  <span class="label label-info label-large label-title complained"><%= link.title %> - 更新</span>
+                <% else %>
+                  <span class="label label-info label-large label-title"><%= link.title %></span>
+                <% end %>
+                <div align="center">
+                <%= image_tag(link.photos.first.file.tiny) %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

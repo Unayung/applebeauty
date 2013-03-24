@@ -11,7 +11,7 @@ class LinksController < ApplicationController
 
     if params[:q].present?
       @query_string = params[:q][:detail_cont]
-      @links = @search.result.paginate(:per_page => 18, :page => params[:page])
+      @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
     else
       @links = Link.recent.paginate(:per_page => 18, :page => params[:page])
     end
@@ -32,15 +32,6 @@ class LinksController < ApplicationController
 
     @next = @link.next
     @previous = @link.previous
-  end
-
-  def search
-
-    if params[:q].present?
-      @link = @search.result.paginate(:per_page => 18, :page => params[:page])
-    else
-      @link = Link.recent.paginate(:per_page => 18, :page => params[:page])
-    end
   end
 
   def like
@@ -68,11 +59,18 @@ class LinksController < ApplicationController
   def best_of_the_week
     set_page_title("本週最優")
     @links = Link.best_of_the_week
+    if @links.empty?
+      get_random_link
+    end
   end
 
   def best_of_the_month
     set_page_title("本月最優")
     @links = Link.best_of_the_month
+
+    if @links.empty?
+      get_random_link
+    end
   end
 
   def worst_of_all
@@ -93,5 +91,15 @@ class LinksController < ApplicationController
 
   def search_object
     @search = Link.ransack(params[:q])
+  end
+
+  def get_random_link
+    offset0 = rand(Link.count)
+    offset1 = rand(Link.count)
+    offset2 = rand(Link.count)
+    @random_links = []
+    @random_links << Link.first(:offset => offset0)
+    @random_links << Link.first(:offset => offset1)
+    @random_links << Link.first(:offset => offset2)
   end
 end

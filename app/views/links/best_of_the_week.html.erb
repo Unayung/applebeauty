@@ -1,3 +1,4 @@
+<% if @links.present? %>
 <% @links.each_with_index do |link, i| %>
   <div class="span6 offset3">
     <div class="white-panel">
@@ -24,4 +25,9 @@
     </div>
     <br>
   </div>
+<% end %>
+<% else %>
+<div class="span8 offset2">
+<%= render partial: "no_result" %>
+</div>
 <% end %>
