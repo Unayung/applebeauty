@@ -23,7 +23,7 @@ class LinksController < ApplicationController
     set_page_description(strip_tags("#{@link.detail}"))
     set_page_keywords(@link.detail)
     set_page_image(Setting.domain + @link.photos.first.file.url) if @link.photos
-
+    get_random_link(6)
     @next = @link.next
     @previous = @link.previous
   end
@@ -52,7 +52,7 @@ class LinksController < ApplicationController
     set_page_title("本週最優")
     @links = Link.best_of_the_week
     if @links.empty?
-      get_random_link
+      get_random_link(3)
     end
   end
 
@@ -61,7 +61,7 @@ class LinksController < ApplicationController
     @links = Link.best_of_the_month
 
     if @links.empty?
-      get_random_link
+      get_random_link(3)
     end
   end
 
@@ -85,13 +85,13 @@ class LinksController < ApplicationController
     @search = Link.ransack(params[:q])
   end
 
-  def get_random_link
-    offset0 = rand(Link.count)
-    offset1 = rand(Link.count)
-    offset2 = rand(Link.count)
+  def get_random_link(num)
     @random_links = []
-    @random_links << Link.first(:offset => offset0)
-    @random_links << Link.first(:offset => offset1)
-    @random_links << Link.first(:offset => offset2)
+    (1..num).each do |i|
+      offset = rand(Link.count)
+      @random_links << Link.first(:offset => offset)
+    end
+
+    return @random_links
   end
 end

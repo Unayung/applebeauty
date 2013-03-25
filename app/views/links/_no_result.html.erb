@@ -6,22 +6,7 @@
     <div class="row">
       <div class="span6 offset1">
         <div class="row">
-        <% @random_links.each do |link| %>
-          <div class="span2 box">
-            <%= link_to(link) do %>
-              <div class="innerbox">
-                <% if link.photos.size > 1 %>
-                  <span class="label label-info label-large label-title complained"><%= link.title %> - 更新</span>
-                <% else %>
-                  <span class="label label-info label-large label-title"><%= link.title %></span>
-                <% end %>
-                <div align="center">
-                <%= image_tag(link.photos.first.file.tiny) %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <%= render partial: "random_result" %>
         </div>
       </div>
     </div>

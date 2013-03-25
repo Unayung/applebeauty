@@ -2,7 +2,7 @@
   <div class="navbar-inner top ">
     <div class="container" align="center">
       <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
-      <%= render :partial => "common/search_form" %>
+      <%= render partial: "common/search_form" %>
       <div class="nav-collapse">
         <%= render_list :class => "nav" do |li|
           li << link_to("本週最優",best_of_the_week_links_path)
@@ -11,7 +11,7 @@
         end %>
       </div>
       <div class="social"><%=  fb_like(request.url) %></div>
-      <%# render :partial => "common/user_nav" %>
+      <%# render partial: "common/user_nav" %>
     </div>
   </div>
 </div>

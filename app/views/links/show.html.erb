@@ -17,14 +17,14 @@
   <div class="row">
     <div class="span4">
       <br>
-      <%= render :partial => "info_box" %>
+      <%= render partial: "info_box" %>
     </div>
     <div class="span3">
       <br>
       <div class="white-box" align="center">
         <h3>鄉民統計</h3>
         <div class="vote-result">
-          <%= render :partial => "vote_box" %>
+          <%= render partial: "vote_box" %>
         </div>
         <br>
       </div>
@@ -44,6 +44,15 @@
 </div>
 <div class="span12" align="center">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
+</div>
+<div class="span12">
+  <div class="white-box">
+    <div class="row">
+      <div class="span12" align="center"><h3>再送上六位正妹</h3></div>
+      <br>
+      <%= render partial: "random_result" %>
+    </div>
+  </div>
 </div>
 <%= content_for :javascripts do %>
   <%= flowplayer_for :video, '/flowplayer.swf', 'jquery' do |player| %>

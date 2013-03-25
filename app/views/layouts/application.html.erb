@@ -21,7 +21,7 @@
 
 <%= render_body_tag %>
 
-<%= render :partial => "common/menu" %>
+<%= render partial: "common/menu" %>
 
   <div class="container">
 
@@ -37,14 +37,14 @@
 
           
   </div>
-  <%= render :partial => "common/footer" %>
+  <%= render partial: "common/footer" %>
 
 
   
 
-  <%= render :partial => "common/bootstrap_modal" %>    
-  <%= render :partial => "common/facebook_js" %>
-  <%= render :partial => "common/google_analytics" %>
+  <%= render partial: "common/bootstrap_modal" %>    
+  <%= render partial: "common/facebook_js" %>
+  <%= render partial: "common/google_analytics" %>
  
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "/javascripts/flowplayer.min.js" %>
