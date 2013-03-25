@@ -9,6 +9,7 @@ gem "mysql2"
 
 gem "flowplayer", "= 0.1.3"
 gem "acts_as_votable", "~> 0.5.0"
+gem "cells"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

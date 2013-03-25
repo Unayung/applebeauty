@@ -63,6 +63,9 @@ GEM
       activesupport (>= 3.0)
       carrierwave (>= 0.5.7)
       mime-types
+    cells (3.8.8)
+      actionpack (>= 3.0)
+      railties (>= 3.0)
     chronic (0.9.1)
     chunky_png (1.2.7)
     coderay (1.0.9)
@@ -220,6 +223,7 @@ DEPENDENCIES
   capistrano-ext
   carrierwave
   carrierwave-meta
+  cells
   coffee-rails (~> 3.2.1)
   colorbox-rails
   compass-rails
