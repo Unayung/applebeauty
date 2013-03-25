@@ -27,3 +27,5 @@ end
 #   db_config = "/home/apps/database.yml.production" 
 #   run "cp #{db_config} #{release_path}/config/database.yml" 
 # end
+after "deploy:update_code", "sitemap:copy_old_sitemap"
+after "deploy:update_code", "sitemap:refresh"
