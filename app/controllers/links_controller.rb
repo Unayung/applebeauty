@@ -29,22 +29,18 @@ class LinksController < ApplicationController
   end
 
   def like
-    if @voter.voted_on?(@link)
-      flash[:notice] = "您投過票囉"
-    else
-      @voter.likes(@link)
-      @link.calculate_rate
+    if @link.up_vote_by_this_user(@voter)
       flash[:notice] = "感謝您神聖一票，已列入統計"
+    else
+      flash[:notice] = "您投過票囉"
     end
   end
 
   def dislike
-    if @voter.voted_on?(@link)
-      flash[:notice] = "您投過票囉"
-    else
-      @voter.dislikes(@link)
-      @link.calculate_rate
+    if @link.down_vote_by_this_user(@voter)
       flash[:notice] = "感謝您神聖一票，已列入統計"
+    else
+      flash[:notice] = "您投過票囉"
     end
   end
 

@@ -37,4 +37,24 @@ class Link < ActiveRecord::Base
     self.rate = self.likes.size - self.dislikes.size
     self.save
   end
+
+  def up_vote_by_this_user(voter)
+    if voter.voted_on?(self)
+      return false
+    else
+      voter.likes(self)
+      self.calculate_rate
+      return true
+    end 
+  end
+
+  def down_vote_by_this_user(voter)
+    if voter.voted_on?(self)
+      return false
+    else
+      voter.dislikes(self)
+      self.calculate_rate
+      return true
+    end 
+  end
 end
