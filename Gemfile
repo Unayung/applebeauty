@@ -69,6 +69,7 @@ end
 group :production do
   gem "whenever"
   gem "newrelic_rpm"
+  gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 end
 
 
