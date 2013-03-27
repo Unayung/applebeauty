@@ -1,0 +1,34 @@
+<% if @links.present? %>
+<% @links.each_with_index do |link, i| %>
+  <div class="span12">
+    <div class="white-box">
+      <div class="row">
+        <div class="span8">
+          <%= link_to(link_path(link)) do %>
+            <% link.photos.each_with_index do |photo, j| %>
+              <% if j < 3 %>
+                <%= image_tag(photo.file, :width => 200) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="span3">
+          <br>
+          <span class="girl-name"><%= render_link_girl_name(link) %></span>
+          <div>
+            <span class="red">好評指數 <%= link.rate %></span>
+          </div>
+          <div>
+            <%= link.detail.html_safe %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+<% end %>
+<% else %>
+<div class="span8 offset2">
+<%= render partial: "no_result" %>
+</div>
+<% end %>

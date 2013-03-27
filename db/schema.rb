@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321161048) do
+ActiveRecord::Schema.define(:version => 20130327050803) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(:version => 20130321161048) do
     t.string   "clip"
     t.text     "detail"
     t.integer  "rate"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "appeal",     :default => false
   end
 
   add_index "links", ["title"], :name => "index_links_on_title"

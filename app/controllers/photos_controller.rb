@@ -16,6 +16,7 @@ class PhotosController < ApplicationController
     @photo = @link.photos.build
     @photo.file = params[:link_photos][:file]
     if @photo.save
+      @photo.link.update_attribute(:appeal, true)
       respond_to do |format|
         format.html {                                         #(html response is for browsers using iframe sollution)
           render :json => [@photo.to_jq_upload].to_json,

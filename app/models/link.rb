@@ -33,6 +33,10 @@ class Link < ActiveRecord::Base
     where("rate < 0").order("rate asc").limit(5)
   end
 
+  def self.appeal
+    where("appeal = true").order("rate asc")  
+  end
+
   def calculate_rate
     self.rate = self.likes.size - self.dislikes.size
     self.save
@@ -57,4 +61,5 @@ class Link < ActiveRecord::Base
       return true
     end 
   end
+
 end

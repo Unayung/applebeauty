@@ -1,7 +1,7 @@
   <div class="span2 box">
     <%= link_to(@link) do %>
       <div class="innerbox">
-        <% if @link.photos.size > 1 %>
+        <% if @link.appeal %>
           <span class="label label-info label-large label-title complained"><%= @link.title %> - 更新</span>
         <% else %>
           <span class="label label-info label-large label-title"><%= @link.title %></span>

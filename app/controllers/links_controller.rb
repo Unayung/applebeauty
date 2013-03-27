@@ -2,7 +2,7 @@
 class LinksController < ApplicationController
 
   before_filter :find_voter, :only => [:like, :dislike, :show]
-  before_filter :search_object, :only => [:index, :show, :best_of_the_week, :best_of_the_month, :search, :worst_of_all]
+  before_filter :search_object, :only => [:index, :show, :best_of_the_week, :best_of_the_month, :search, :worst_of_all, :appeal]
   before_filter :find_link, :only => [:show, :like, :dislike]
 
   include ActionView::Helpers::SanitizeHelper
@@ -45,7 +45,7 @@ class LinksController < ApplicationController
   end
 
   def best_of_the_week
-    set_page_title("本週最優")
+    set_page_title("本週推薦")
     @links = Link.best_of_the_week
     if @links.empty?
       get_random_link(3)
@@ -53,7 +53,7 @@ class LinksController < ApplicationController
   end
 
   def best_of_the_month
-    set_page_title("本月最優")
+    set_page_title("本月推薦")
     @links = Link.best_of_the_month
 
     if @links.empty?
@@ -64,6 +64,15 @@ class LinksController < ApplicationController
   def worst_of_all
     set_page_title("賣鬧專區")
     @links = Link.worst_of_all
+  end
+
+  def appeal
+    set_page_title("上訴專區")
+    @links = Link.appeal
+    
+    if @links.empty?
+      get_random_link(3)
+    end
   end
 
   protected
