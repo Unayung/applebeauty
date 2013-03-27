@@ -41,9 +41,13 @@
 <div class="span12"><hr></div>
 <div class="span12">
   <%= render partial: "complain" %>
+  <br>
 </div>
 <div class="span12" align="center">
+  <div class="white-box">
   <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
+  </div>
+  <br>
 </div>
 <div class="span12">
   <div class="white-box">
