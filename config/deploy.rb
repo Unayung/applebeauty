@@ -2,6 +2,7 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano' #Using bundler with Capistrano
 require "rvm/capistrano"   # Load RVM's capistrano plugin.
+require "whenever/capistrano"
 
 set :stages, %w(staging production)
 set :default_stage, "production" 
