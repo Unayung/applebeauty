@@ -99,6 +99,6 @@ end
 
 after "deploy:finalize_update", "my_tasks:symlink"
 after :deploy, "deploy:cleanup"
-
+after :deploy, "whenever:update_crontab"
 #after "deploy:restart", "sphinx:rebuild"
 #after "deploy:restart", "sphinx:restart"
