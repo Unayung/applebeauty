@@ -14,6 +14,16 @@
       </div>
     </div>
   </div>
+  <br>
+  <div class="row">
+    <div class="span8">
+      <span class="btn btn-warning" id="toggleInfo">看基本資料</span>
+      <div class="white-box detail">
+        <h4><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h4>
+        <%= @link.detail.html_safe %>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="span12"><hr></div>
 <div class="span12">
@@ -39,7 +49,7 @@
 
     $("span#toggleInfo").click(function(){
       $("div.detail").slideToggle(500);
-      $("img.main-img").slideToggle(500);
+      // $("img.main-img").slideToggle(500);
     })
   </script>
 <% end %>
