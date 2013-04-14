@@ -1,58 +1,25 @@
 <div class="span12">
-  <%= render partial: "title_box" %>
+  <%= render partial: "tool_box" %>
   <br>
 </div>
-<div class="span5">
+<div class="span4">
   <%= render partial: "image_box" %>
 </div>
-<div class="span7">
+<div class="span8">
   <div class="row">
-    <div class="span7">
+    <div class="span8">
       <div class="white-box">
-        <div id='video' style='display:block;width:530px;height:350px;'>
+        <div id='video' style='display:block;width:610px;height:380px;'>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span4">
-      <br>
-      <%= render partial: "info_box" %>
-    </div>
-    <div class="span3">
-      <br>
-      <div class="white-box" align="center">
-        <h3>鄉民統計</h3>
-        <div class="vote-result">
-          <%= render partial: "vote_box" %>
-        </div>
-        <br>
-      </div>
-    </div>
-    <div class="span3">
-      <br>
-      <div class="white-box nav-button" align="center">
-        <%= render_next_link %>
-        <%= render_prev_link %>
       </div>
     </div>
   </div>
 </div>
 <div class="span12"><hr></div>
 <div class="span12">
-  <%= render partial: "complain" %>
-  <br>
-</div>
-<div class="span12" align="center">
-  <div class="white-box">
-  <%= fb_comments(Setting.domain + url_for(), :width => "940px", :mobile => false ) %>
-  </div>
-  <br>
-</div>
-<div class="span12">
   <div class="white-box">
     <div class="row">
-      <div class="span12" align="center"><h3>再送上六位正妹</h3></div>
+      <div class="span12" align="center"><h3>隨機推薦</h3></div>
       <br>
       <%= render partial: "random_result" %>
     </div>
@@ -65,11 +32,14 @@
         <% 'this.unmute();' %>
       <% end %>
   <% end %>
-<% end %>
-<%= content_for :javascripts do %>
-<script type="text/javascript">
-  $("#check-result").click(function(){
-    $("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票</div>');
-  })
-</script>
+  <script type="text/javascript">
+    $("#check-result").click(function(){
+      $("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票</div>');
+    })
+
+    $("span#toggleInfo").click(function(){
+      $("div.detail").slideToggle(500);
+      $("img.main-img").slideToggle(500);
+    })
+  </script>
 <% end %>

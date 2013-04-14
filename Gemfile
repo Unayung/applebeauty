@@ -64,6 +64,7 @@ group :development do
   gem "powder"
   gem "pry-nav"
   gem "pry-remote"
+  gem "guard-livereload"
 end
 
 group :production do

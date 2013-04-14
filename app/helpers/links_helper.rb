@@ -24,7 +24,7 @@ module LinksHelper
     s = ""
     s += content_tag(:i, "",:class => "icon-arrow-left")
     s += " 後一天"
-    link_to(s.html_safe, @previous, :class => "btn btn-info")
+    link_to(s.html_safe, @previous, :class => "btn left")
     # s.html_safe
   end
 
@@ -32,7 +32,7 @@ module LinksHelper
     s = ""
     s += "前一天 "
     s += content_tag(:i, "",:class => "icon-arrow-right")
-    link_to(s.html_safe, @next, :class => "btn btn-info")
-    
+    link_to(s.html_safe, @next, :class => "btn right")
+
   end
 end

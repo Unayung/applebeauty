@@ -1,14 +1,13 @@
-<div class="navbar navbar-fixed-top white-box" style="opacity:1;">
+<div class="navbar navbar-fixed-top" style="opacity:1;">
   <div class="navbar-inner top ">
     <div class="container" align="center">
       <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
       <%= render partial: "common/search_form" %>
       <div class="nav-collapse">
         <%= render_list :class => "nav" do |li|
-          li << link_to("本週最優",best_of_the_week_links_path)
-          li << link_to("本月最優",best_of_the_month_links_path)
-          li << link_to("賣鬧專區", worst_of_all_links_path)
-          li << link_to("上訴專區", appeal_links_path)
+          li << link_to("本週最優",best_of_the_week_links_path, :class => "no-shadow")
+          li << link_to("本月最優",best_of_the_month_links_path, :class => "no-shadow")
+          li << link_to("賣鬧專區", worst_of_all_links_path, :class => "no-shadow")
         end %>
       </div>
       <div class="social"><%=  fb_like(request.url) %></div>

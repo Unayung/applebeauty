@@ -1,5 +1,9 @@
 <div class="white-box" align="center">
-<%= link_to(@link.photos.first.file.url, :data => { :colorbox => true }) do %>
-<%= image_tag(@link.photos.first.file) %>
-<% end %>
+  <h4><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h4>
+  <%= link_to(@link.photos.first.file.url, :data => { :colorbox => true }) do %>
+    <%= image_tag(@link.photos.first.file, :class => "main-img") %>
+  <% end %>
+  <div class="white-box detail">
+    <%= @link.detail.html_safe %>
+  </div>
 </div>

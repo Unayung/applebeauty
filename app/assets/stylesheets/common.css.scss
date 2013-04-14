@@ -2,7 +2,17 @@
 @import "twitter/bootstrap";
 @import "bootstrap-override";
 
-// 
+//
+.no-shadow{
+  color: #000 !important;
+  text-shadow: 0 0 0 black !important;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
 .social{
    float:right;
    width: 90px;
@@ -41,6 +51,7 @@
 
 .detail {
   padding: 10px;
+  display: none;
 }
 
 .nav-button {
@@ -52,8 +63,9 @@
 }
 
 .vote-result .votes{
+  width: 140px;
   text-align:left;
-  padding-left: 40px;
+  // padding-left: 40px;
 }
 
 .alert {
@@ -72,9 +84,8 @@ span.girl-name{
 }
 
 #check-result {
-  width: 164px;
+  width: 100px;
   position: relative;
-  left: -2px;
 }
 
 .complained {
