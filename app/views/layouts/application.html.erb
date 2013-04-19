@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <%= render_page_title_tag %>
   <%= render_page_description_meta_tag %>
   <%= render_page_keywords_meta_tag %>
@@ -8,7 +9,7 @@
   <%= csrf_meta_tag %>
 
   <%= stylesheet_link_tag "application" %>
-  
+
   <%= yield :stylesheets %>
 
   <meta property="og:title"       content="<%= page_title ||  SeoHelper.configuration.site_name %>"/>
@@ -31,21 +32,21 @@
         <div class="row">
           <%= yield %>
           <%= yield (:sidebar) %>
-        </div> 
-    
+        </div>
+
       </div>
 
-          
+
   </div>
   <%= render partial: "common/footer" %>
 
 
-  
 
-  <%= render partial: "common/bootstrap_modal" %>    
+
+  <%= render partial: "common/bootstrap_modal" %>
   <%= render partial: "common/facebook_js" %>
   <%= render partial: "common/google_analytics" %>
- 
+
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "/javascripts/flowplayer.min.js" %>
   <%= yield :javascripts %>
