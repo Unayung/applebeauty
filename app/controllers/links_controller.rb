@@ -2,7 +2,7 @@
 class LinksController < ApplicationController
 
   before_filter :find_voter, :only => [:like, :dislike, :show]
-  before_filter :search_object, :only => [:index, :show, :best_of_the_week, :best_of_the_month, :search, :worst_of_all, :appeal]
+  before_filter :search_object, :only => [:index, :show, :best_of_the_week, :best_of_the_month, :search, :worst_of_all, :appeal, :best_of_all]
   before_filter :find_link, :only => [:show, :like, :dislike]
 
   include ActionView::Helpers::SanitizeHelper
@@ -64,6 +64,11 @@ class LinksController < ApplicationController
   def worst_of_all
     set_page_title("賣鬧專區")
     @links = Link.worst_of_all
+  end
+
+  def best_of_all
+    set_page_title("累計最優")
+    @links = Link.best_of_all
   end
 
   def appeal

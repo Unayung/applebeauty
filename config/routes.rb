@@ -11,6 +11,7 @@ Applebeauty::Application.routes.draw do
       get "best_of_the_week"
       get "best_of_the_month"
       get "worst_of_all"
+      get "best_of_all"
       get "appeal"
     end
     member do

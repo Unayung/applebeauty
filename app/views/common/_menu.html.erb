@@ -7,6 +7,7 @@
         <%= render_list :class => "nav" do |li|
           li << link_to("本週最優",best_of_the_week_links_path, :class => "no-shadow")
           li << link_to("本月最優",best_of_the_month_links_path, :class => "no-shadow")
+          li << link_to("累計最優",best_of_all_links_path, :class => "no-shadow")
           li << link_to("賣鬧專區", worst_of_all_links_path, :class => "no-shadow")
         end %>
       </div>

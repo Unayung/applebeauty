@@ -21,16 +21,20 @@ class Link < ActiveRecord::Base
     return query.find(next_id)
   end
 
+  def self.best_of_all
+    order("rate desc").limit(10)
+  end
+
   def self.best_of_the_month
-    where("created_at between ? and ? and rate > 5", Date.today.beginning_of_month, Date.today.end_of_month).order("rate DESC").limit(5)
+    where("created_at between ? and ? and rate > 5", Date.today.beginning_of_month, Date.today.end_of_month).order("rate DESC").limit(10)
   end
 
   def self.best_of_the_week
-    where("created_at between ? and ? and rate > 5", Date.today.beginning_of_week, Date.today.end_of_week).order("rate DESC").limit(5)
+    where("created_at between ? and ? and rate > 5", Date.today.beginning_of_week, Date.today.end_of_week).order("rate DESC").limit(10)
   end
 
   def self.worst_of_all
-    where("rate < 0").order("rate asc").limit(5)
+    where("rate < 0").order("rate asc").limit(10)
   end
 
   def self.appeal
