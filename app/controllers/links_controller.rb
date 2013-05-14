@@ -45,7 +45,7 @@ class LinksController < ApplicationController
   end
 
   def best_of_the_week
-    set_page_title("本週推薦")
+    set_page_title("本週最優")
     @links = Link.best_of_the_week
     if @links.empty?
       get_random_link(3)
@@ -53,7 +53,7 @@ class LinksController < ApplicationController
   end
 
   def best_of_the_month
-    set_page_title("本月推薦")
+    set_page_title("本月最優")
     @links = Link.best_of_the_month
 
     if @links.empty?
