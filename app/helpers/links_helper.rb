@@ -35,4 +35,36 @@ module LinksHelper
     link_to(s.html_safe, @next, :class => "btn right")
 
   end
+
+  def render_link_title(link)
+    if link.link_type == "daily"
+      "今天我最美 #{link.title.gsub(/[^0-9]/, '')}"
+    else
+      "運動靚妹 #{link.title.gsub(/[^0-9]/, '')}"
+    end
+  end
+
+  def render_link_photos_for_slide(link)
+    if link.photos.present?
+      s = ""
+
+      link.photos.each do |photo|
+        if photo == link.photos.first
+          s += content_tag(:div, :class => "item active") do
+            image_tag(photo.file)
+          end
+        else
+          s += content_tag(:div, :class => "item") do
+            image_tag(photo.file)
+          end
+        end
+      end
+
+      return s.html_safe
+    else
+      content_tag(:div, :class => "item active") do
+        image_tag("/images/760x420.gif")
+      end
+    end
+  end
 end

@@ -18,7 +18,11 @@
   <div class="row">
     <div class="span8">
       <span class="btn btn-warning" id="toggleInfo">看基本資料</span>
-      <%= link_to("打開蘋果日報「今天我最美」", @link.url, :class => "btn btn-danger", :target => "_blank") %>
+      <% if @link.link_type == "daily" %>
+        <%= link_to("打開蘋果日報「今天我最美」", @link.url, :class => "btn btn-danger", :target => "_blank") %>
+      <% else %>
+        <%= link_to("打開蘋果日報「運動靚妹」", @link.url, :class => "btn btn-danger", :target => "_blank") %>
+      <% end %>
       <div class="white-box detail">
         <h4><%= render_link_date(@link) %> - <%= render_link_girl_name(@link) %></h4>
         <%= @link.detail.html_safe %>
@@ -47,6 +51,13 @@
       <% end %>
   <% end %>
   <script type="text/javascript">
+  $(document).ready(function () {
+    $('#myCarousel').oneCarousel({
+      easeIn: 'rotateIn',
+      interval: 5000,
+      pause: 'hover'
+    });
+  });
     $("#check-result").click(function(){
       $("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票</div>');
     })
@@ -55,5 +66,7 @@
       $("div.detail").slideToggle(500);
       // $("img.main-img").slideToggle(500);
     })
+
+
   </script>
 <% end %>

@@ -1,5 +1,17 @@
-<div class="white-box" align="center">
+<!-- <div class="white-box" align="center">
   <%= link_to(@link.photos.first.file.url, :data => { :colorbox => true }) do %>
     <%= image_tag(@link.photos.first.file, :class => "main-img") %>
   <% end %>
+</div> -->
+
+<div class="img-polaroid slider">
+  <div id="myCarousel" class="carousel slide">
+      <!-- Carousel items -->
+    <div class="carousel-inner">
+      <%= render_link_photos_for_slide(@link) %>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
+  </div>
 </div>

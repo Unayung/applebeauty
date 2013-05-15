@@ -3,6 +3,8 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-fileupload
+//= require bootstrap.min
+//= require jquery.onecarousel.min
 //= require twitter/bootstrap/alert
 //= require colorbox-rails
 
