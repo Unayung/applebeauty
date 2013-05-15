@@ -51,11 +51,15 @@ module LinksHelper
       link.photos.each do |photo|
         if photo == link.photos.first
           s += content_tag(:div, :class => "item active") do
-            image_tag(photo.file)
+            link_to(photo.file.url, :data => { :colorbox => true }) do
+              image_tag(photo.file)
+            end
           end
         else
           s += content_tag(:div, :class => "item") do
-            image_tag(photo.file)
+            link_to(photo.file.url, :data => { :colorbox => true }) do
+              image_tag(photo.file)
+            end
           end
         end
       end
