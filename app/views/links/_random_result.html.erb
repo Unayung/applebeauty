@@ -2,10 +2,10 @@
           <div class="span2 box">
             <%= link_to(link) do %>
               <div class="innerbox">
-                <% if link.photos.size > 1 %>
-                  <span class="label label-info label-large label-title complained"><%= link.title %> - 更新</span>
+                <% if link.link_type == "sports" %>
+                  <span class="label label-info label-large label-title complained"><%= render_link_title(link) %></span>
                 <% else %>
-                  <span class="label label-info label-large label-title"><%= link.title %></span>
+                  <span class="label label-info label-large label-title"><%= render_link_title(link) %></span>
                 <% end %>
                 <div align="center">
                 <%= image_tag(link.photos.first.file.tiny) %>
