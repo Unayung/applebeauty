@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+require 'capistrano-unicorn'
 set :application, "applebeauty" 
 set :domain, "ab.fbnai.com" 
 set :repository, "git@github.com:Unayung/applebeauty.git" # your ssh way in github.
@@ -29,3 +30,6 @@ end
 # end
 after "deploy:update_code", "sitemap:copy_old_sitemap"
 after "deploy:update_code", "sitemap:refresh"
+
+after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
+after 'deploy:restart', 'unicorn:restart'  # app preloaded

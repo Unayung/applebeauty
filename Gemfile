@@ -57,6 +57,7 @@ end
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
+  gem "capistrano-unicorn", :require => false
   gem "rvm-capistrano"
   gem "cape"
   gem "magic_encoding"
