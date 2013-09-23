@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'capistrano-unicorn'
 set :application, "applebeauty" 
-set :domain, "ab.fbnai.com" 
+set :domain, "ab.unayung.cc" 
 set :repository, "git@github.com:Unayung/applebeauty.git" # your ssh way in github.
 set :deploy_to, "/home/apps/applebeauty" 
 role :app, domain
