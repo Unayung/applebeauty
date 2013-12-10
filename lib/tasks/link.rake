@@ -42,16 +42,20 @@ namespace :link do
     l = Link.new
     l.url = "http://www.appledaily.com.tw"+link.css('a').attr('href')
     l.title = link.css('time').text
+    puts l.title
     page_url = URI::encode(l.url)
+    puts page_url
     page = Nokogiri::HTML(open(page_url))
     image = page.css('div.articulum > figure > a')
     video = page.css('script').text.match(/http.*\.mp4/)
     text = page.css('p#introid').inner_html
+    puts text
     if video
       l.clip = video[0]
     end
     l.detail = text
     photo = Photo.new
+    puts image.attr('href').value
     photo.remote_file_url = image.attr('href').value
     l.save
     photo.link_id = l.id
