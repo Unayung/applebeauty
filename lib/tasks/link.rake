@@ -49,13 +49,13 @@ namespace :link do
     text = page.css('p#introid').inner_html
     if video
       l.clip = video[0]
-      l.detail = text
-      photo = Photo.new
-      photo.remote_file_url = image.attr('href').value
-      l.save
-      photo.link_id = l.id
-      photo.save
-    end 
+    end
+    l.detail = text
+    photo = Photo.new
+    photo.remote_file_url = image.attr('href').value
+    l.save
+    photo.link_id = l.id
+    photo.save
     
   end
 
