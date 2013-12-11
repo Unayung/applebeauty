@@ -33,6 +33,33 @@ namespace :link do
     end
   end
 
+  task :get_specific_link => :environment do
+    if ENV['url'].present?
+      apple_url = ENV['url']
+      l = Link.new
+      l.url = apple_url
+      l.title = ""
+      puts l.title
+      page_url = URI::encode(l.url)
+      puts page_url
+      page = Nokogiri::HTML(open(page_url))
+      image = page.css('div.articulum > figure > a')
+      video = page.css('script').text.match(/http.*\.mp4/)
+      text = page.css('p#introid').inner_html
+      puts text
+      if video
+        l.clip = video[0]
+      end
+      l.detail = text
+      photo = Photo.new
+      puts image.attr('href').value
+      photo.remote_file_url = image.attr('href').value
+      l.save
+      photo.link_id = l.id
+      photo.save
+    end
+  end
+
   task :get_new_link => :environment do
     apple_url = 'http://www.appledaily.com.tw/appledaily/bloglist/headline/30342177/1'
     list = Nokogiri::HTML(open(apple_url))

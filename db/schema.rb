@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(:version => 20130515035051) do
   create_table "links", :force => true do |t|
     t.string   "url"
     t.string   "title"
-    t.string   "clip"
-    t.text     "detail"
     t.integer  "rate"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.string   "clip"
+    t.text     "detail"
     t.boolean  "appeal",     :default => false
     t.string   "link_type",  :default => "daily"
   end
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20130515035051) do
   add_index "links", ["url"], :name => "index_links_on_url", :unique => true
 
   create_table "photos", :force => true do |t|
-    t.integer  "link_id"
     t.string   "file"
+    t.integer  "link_id"
     t.string   "file_width"
     t.string   "file_height"
     t.string   "file_image_size"
