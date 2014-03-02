@@ -16,6 +16,8 @@
 *.DS_Store
 *.swp
 .env
+.rvmrc
+.powrc
 public/uploads
 vendor/bundler_gems
 config/database.yml
