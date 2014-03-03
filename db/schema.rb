@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515035051) do
+ActiveRecord::Schema.define(:version => 20140303043328) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20130515035051) do
 
   add_index "links", ["link_type"], :name => "index_links_on_link_type"
   add_index "links", ["title"], :name => "index_links_on_title"
-  add_index "links", ["url"], :name => "index_links_on_url", :unique => true
 
   create_table "photos", :force => true do |t|
     t.string   "file"
