@@ -7,7 +7,7 @@ gem "nokogiri"
 
 gem "mysql2"
 
-gem "flowplayer", "= 0.1.3"
+# gem "flowplayer", "= 0.1.3"
 gem "acts_as_votable", "~> 0.5.0"
 gem "cells"
 gem "sitemap_generator"
@@ -70,8 +70,8 @@ end
 
 group :production do
   gem "whenever"
-  gem "newrelic_rpm"
-  gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+  # gem "newrelic_rpm"
+  # gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 end
 
 
