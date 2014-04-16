@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20140322060521) do
 
   add_index "links", ["link_type"], :name => "index_links_on_link_type"
   add_index "links", ["title"], :name => "index_links_on_title"
-  add_index "links", ["url"], :name => "index_links_on_url"
+  add_index "links", ["url"], :name => "index_links_on_url", :unique => true
 
   create_table "photos", :force => true do |t|
     t.string   "file"
