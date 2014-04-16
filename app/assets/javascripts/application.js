@@ -3,9 +3,8 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery-fileupload
-//= require bootstrap.min
 //= require jquery.onecarousel.min
-//= require twitter/bootstrap/alert
+//= require bootstrap
 //= require colorbox-rails
 
 function dismissAlertAfterTime(timespan) {

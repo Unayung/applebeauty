@@ -14,7 +14,6 @@ gem "sitemap_generator"
 # Gems used only for assets and not required
 # in production environments by default.
 
-gem "sass-rails",   "~> 3.2.3"
 gem "coffee-rails", "~> 3.2.1"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -37,7 +36,9 @@ gem "carrierwave-meta"
 
 gem "settingslogic"
 
-gem "anjlab-bootstrap-rails", ">= 2.1", :require => "bootstrap-rails"
+gem 'sass-rails', '>= 3.2'
+gem 'bootstrap-sass', '~> 2.1.1.0'
+
 gem "bootstrap_helper", ">= 2.1.2"
 gem "simple_form", "2.0.3"
 gem "will_paginate", "3.0.3"

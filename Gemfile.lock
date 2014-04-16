@@ -33,14 +33,12 @@ GEM
     airbrake (3.1.16)
       builder
       multi_json
-    anjlab-bootstrap-rails (3.0.3.0)
-      railties (>= 3.0)
-      sass (>= 3.2)
     annotate (2.6.3)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (3.0.3)
     bcrypt (3.1.7)
+    bootstrap-sass (2.1.1.0)
     bootstrap_helper (3.2.2.1)
       railties (~> 3.0)
       simple_form (~> 2.0.2)
@@ -266,8 +264,8 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable (~> 0.5.0)
   airbrake
-  anjlab-bootstrap-rails (>= 2.1)
   annotate
+  bootstrap-sass (~> 2.1.1.0)
   bootstrap_helper (>= 2.1.2)
   cape
   capistrano
@@ -296,7 +294,7 @@ DEPENDENCIES
   ransack
   rmagick
   rvm-capistrano
-  sass-rails (~> 3.2.3)
+  sass-rails (>= 3.2)
   seo_helper (~> 1.0)
   settingslogic
   simple_form (= 2.0.3)
