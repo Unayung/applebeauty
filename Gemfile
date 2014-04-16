@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "3.2.13"
+gem "rails", "3.2.16"
 gem "nokogiri"
 # Bundle edge Rails instead:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -37,7 +37,7 @@ gem "carrierwave-meta"
 gem "settingslogic"
 
 gem 'sass-rails', '>= 3.2'
-gem 'bootstrap-sass', '~> 2.1.1.0'
+gem 'bootstrap-sass'
 
 gem "bootstrap_helper", ">= 2.1.2"
 gem "simple_form", "2.0.3"
