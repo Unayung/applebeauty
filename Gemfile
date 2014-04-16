@@ -13,18 +13,19 @@ gem "cells"
 gem "sitemap_generator"
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem "sass-rails",   "~> 3.2.3"
-  gem "coffee-rails", "~> 3.2.1"
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem "therubyracer", :platforms => :ruby
+gem "sass-rails",   "~> 3.2.3"
+gem "coffee-rails", "~> 3.2.1"
 
-  gem "uglifier", ">= 1.0.3"
-end
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem "therubyracer", :platforms => :ruby
+
+gem "uglifier", ">= 1.0.3"
+
 
 # gem "turbolinks"
 gem "jquery-rails"
+gem "jquery-ui-rails"
 gem "devise"
 
 gem "seo_helper", "~> 1.0"
@@ -48,11 +49,11 @@ gem "turbo-sprockets-rails3"
 
 gem "ransack"
 
-group :assets do
-  gem "compass-rails"
-  gem "jquery-fileupload-rails", "= 0.4.0"
-  gem "colorbox-rails"
-end
+# group :assets do
+gem "compass-rails"
+gem "jquery-fileupload-rails", "= 0.4.0"
+gem "colorbox-rails"
+# end
 
 group :development do
   gem "capistrano"

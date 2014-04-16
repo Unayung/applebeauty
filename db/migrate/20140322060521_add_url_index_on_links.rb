@@ -1,6 +1,6 @@
 class AddUrlIndexOnLinks < ActiveRecord::Migration
   def up
-  	add_index :links, :url, :unique => true
+  	add_index :links, :url
   end
 
   def down
