@@ -6,9 +6,9 @@ namespace :link do
 
   task :get_all_link => :environment do
     apple_url = 'http://www.appledaily.com.tw/appledaily/bloglist/headline/30342177/'
-    i = 1
-    while i < 10
-      list = Nokogiri::HTML(open(apple_url+i.to_s))
+    # i = 1
+    # while i < 10
+      list = Nokogiri::HTML(open(apple_url))
       list = list.css('div.abdominis')
       list.css('li.fillup').each do |link|
         l = Link.new
@@ -29,8 +29,8 @@ namespace :link do
           photo.save
         end 
       end
-      i +=1
-    end
+      # i +=1
+    # end
   end
 
   task :get_specific_link => :environment do
