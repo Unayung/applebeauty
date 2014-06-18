@@ -65,10 +65,16 @@
   color: red;
 }
 
-.vote-result .votes{
-  width: 140px;
-  text-align:left;
-  // padding-left: 40px;
+.vote-result {
+  .votes{
+    width: 140px;
+    text-align:left;
+    // padding-left: 40px;
+  }
+
+  .btn-group{
+    width: 320px;
+  }
 }
 
 .alert {
