@@ -3,9 +3,15 @@ require 'capistrano/ext/multistage'
 require 'bundler/capistrano' #Using bundler with Capistrano
 require "rvm/capistrano"   # Load RVM's capistrano plugin.
 require "whenever/capistrano"
+require 'cape'
+
+Cape do
+  # Create Capistrano recipes for all Rake tasks.
+  mirror_rake_tasks :link
+end
 
 set :stages, %w(staging production)
-set :default_stage, "production" 
+set :default_stage, "production"
 
 default_environment["RAILS_ENV"] = "production"
 
@@ -24,7 +30,7 @@ namespace :my_tasks do
   task :symlink, :roles => [:web] do
     run "mkdir -p #{deploy_to}/shared/log"
     run "mkdir -p #{deploy_to}/shared/pids"
-    
+
     symlink_hash = {
       "#{shared_path}/config/database.yml"   => "#{release_path}/config/database.yml",
       "#{shared_path}/config/config.yml"    => "#{release_path}/config/config.yml",

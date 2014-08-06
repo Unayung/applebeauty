@@ -61,13 +61,13 @@ group :development do
   gem "capistrano-ext"
   gem "capistrano-unicorn", :require => false
   gem "rvm-capistrano"
-  gem "cape"
   gem "magic_encoding"
   gem "annotate"
   gem "powder"
   gem "pry-nav"
   gem "pry-remote"
   gem "guard-livereload"
+  gem 'cape', '~> 1'
 end
 
 group :production do

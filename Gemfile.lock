@@ -267,7 +267,7 @@ DEPENDENCIES
   annotate
   bootstrap-sass
   bootstrap_helper (>= 2.1.2)
-  cape
+  cape (~> 1)
   capistrano
   capistrano-ext
   capistrano-unicorn
