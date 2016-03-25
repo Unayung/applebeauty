@@ -41,7 +41,7 @@ class LinksController < ApplicationController
     set_page_description(strip_tags("#{@link.detail}"))
     set_page_keywords(@link.detail)
     set_page_image(Setting.domain + @link.photos.first.file.url) if @link.photos
-    get_random_link(6)
+    get_random_link(3)
     @next = @link.next
     @previous = @link.previous
   end
