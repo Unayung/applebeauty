@@ -8,9 +8,9 @@
       <% else %>
         <div class="btn-group">
           <div class="hidden-xs">
-            <%= link_to(fa_icon("thumbs-up 2x", text: "她 我可以"), like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
-            <span class="btn btn-info check-result"><%= fa_icon("list 2x") %>沒意見，看結果</span>
-            <%= link_to(fa_icon("thumbs-down 2x", text: "不要鬧了!!"), dislike_link_path(@link), :class => "btn btn-inverse btn-warning", :remote => true, :method => :post) %>
+            <%= link_to(fa_icon("thumbs-up", text: "她 我可以"), like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
+            <span class="btn btn-info check-result"><%= fa_icon("list") %> 沒意見，看結果</span>
+            <%= link_to(fa_icon("thumbs-down", text: "不要鬧了!!"), dislike_link_path(@link), :class => "btn btn-inverse btn-warning", :remote => true, :method => :post) %>
           </div>
           <div class="visible-xs">
             <%= link_to(fa_icon("thumbs-up 2x"), like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
