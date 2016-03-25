@@ -7,9 +7,16 @@
         覺得她正的共 <%= content_tag(:span, @link.get_likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.get_dislikes.size, :class => "label label-info") %> 票</div>
       <% else %>
         <div class="btn-group">
-          <%= link_to("她，我可以", like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
-          <span id="check-result" class="btn btn-info">沒意見，看結果</span>
-          <%= link_to("不要鬧了!!", dislike_link_path(@link), :class => "btn btn-inverse btn-warning", :remote => true, :method => :post) %>
+          <div class="hidden-xs">
+            <%= link_to(fa_icon("thumbs-up 2x", text: "她 我可以"), like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
+            <span class="btn btn-info check-result"><%= fa_icon("list 2x") %>沒意見，看結果</span>
+            <%= link_to(fa_icon("thumbs-down 2x", text: "不要鬧了!!"), dislike_link_path(@link), :class => "btn btn-inverse btn-warning", :remote => true, :method => :post) %>
+          </div>
+          <div class="visible-xs">
+            <%= link_to(fa_icon("thumbs-up 2x"), like_link_path(@link), :class => "btn btn-danger", :remote => true, :method => :post) %>
+            <span class="btn btn-info check-result"><%= fa_icon("list 2x") %></span>
+            <%= link_to(fa_icon("thumbs-down 2x"), dislike_link_path(@link), :class => "btn btn-inverse btn-warning", :remote => true, :method => :post) %>
+          </div>
         </div>
       <% end %>
     </div>

@@ -1,3 +1,3 @@
-$("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票</div>');
+$("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.get_likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.get_dislikes.size, :class => "label label-info") %> 票</div>');
 insertAutoDismissAlert('<%= escape_javascript(notice_message) %>');
 <% flash[:notice] = nil %>
