@@ -25,6 +25,7 @@ class LinksController < ApplicationController
 
   def index
 
+    set_page_image(Setting.domain + Link.last.photos.first.file.url) if Link.last.photos.first.file
     # @links = Link.all
     # @links = @links.paginate(:page => params[:page], :per_page => 18)
     if params[:q].present?
