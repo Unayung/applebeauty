@@ -1,14 +1,14 @@
 <% if @links.present? %>
   <% @links.each_with_index do |link, i| %>
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="white-panel shadow">
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-xs-6">
             <%= link_to(link_path(link)) do %>
               <%= image_tag(link.photos.first.file, :width => 180) %>
             <% end %>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-6">
             <div class="github-fork-ribbon-wrapper right">
               <div class="github-fork-ribbon"><a href="">本月第 <%= i+1 %> 名</a></div>
             </div>
