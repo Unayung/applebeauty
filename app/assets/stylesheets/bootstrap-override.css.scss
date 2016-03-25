@@ -1,35 +1,31 @@
 body{
-  padding-top: 60px;
+  padding-top: 20px;
   background-image: url(bg.jpeg);
 }
 
-ul.nav li.dropdown:hover .dropdown-menu{
-    display: block;
-}
+// ul.nav li.dropdown:hover .dropdown-menu{
+//     display: block;
+// }
 
 .navbar .dropdown-menu {
  margin-top: 0px;
 }
 
 .box{
-  width: 138px;
-  height: 240px;
-  #border: 1px dashed #ccc;
   margin-bottom: 20px;
-  #-moz-box-shadow:6px 6px 12px -2px rgba(20%,20%,40%,1);
-  #-webkit-box-shadow:6px 6px 12px -2px rgba(20%,20%,40%,1);
-  box-shadow:10px 10px 20px -5px rgba(30%,30%,30%,1);
 }
 
 .innerbox{
+  padding-top: 10px;
   background-color: #fff;
   img{
-    margin: 8px 0;
+    margin: 10px 0;
   }
 }
 
 .label-title {
-  width: 130px;
+  display: block;
+  width: 135px;
   text-align: center;
   line-height: 18px !important;
   font-style: normal !important;
@@ -38,7 +34,7 @@ ul.nav li.dropdown:hover .dropdown-menu{
   background-color: transparent !important;
   background-image: none !important;
 }
-.navbar .brand{
+nav .brand{
   color: #000 !important;
   font-size: 32px;
 }

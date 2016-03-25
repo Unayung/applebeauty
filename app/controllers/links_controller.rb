@@ -1,4 +1,20 @@
 # -*- encoding : utf-8 -*-
+# == Schema Information
+#
+# Table name: links
+#
+#  id         :integer          not null, primary key
+#  url        :string(255)
+#  title      :string(255)
+#  rate       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  clip       :string(255)
+#  detail     :text(65535)
+#  appeal     :boolean          default(FALSE)
+#  link_type  :string(255)      default("daily")
+#
+
 class LinksController < ApplicationController
 
   before_filter :find_voter, :only => [:like, :dislike, :show]
@@ -9,12 +25,14 @@ class LinksController < ApplicationController
 
   def index
 
-    if params[:q].present?
-      @query_string = params[:q][:detail_cont]
-      @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
-    else
-      @links = Link.recent.paginate(:per_page => 18, :page => params[:page])
-    end
+    @links = Link.all
+    @links = @links.paginate(:page => params[:page], :per_page => 18)
+    # if params[:q].present?
+    #   @query_string = params[:q][:detail_cont]
+    #   @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
+    # else
+    #   @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
+    # end
   end
 
   def show
@@ -48,7 +66,7 @@ class LinksController < ApplicationController
     set_page_title("本週最優")
     @links = Link.best_of_the_week
     if @links.empty?
-      get_random_link(3)
+      get_random_link(6)
     end
   end
 
@@ -57,7 +75,7 @@ class LinksController < ApplicationController
     @links = Link.best_of_the_month
 
     if @links.empty?
-      get_random_link(3)
+      get_random_link(6)
     end
   end
 
@@ -88,7 +106,7 @@ class LinksController < ApplicationController
 
   def find_voter
     session[:voting_id] = request.remote_ip
-    @voter = Session.find_or_create_by_ip(session[:voting_id])
+    @voter = Session.find_or_create_by(:ip => session[:voting_id])
   end
 
   def search_object
@@ -96,12 +114,9 @@ class LinksController < ApplicationController
   end
 
   def get_random_link(num)
-    @random_links = []
-    (1..num).each do |i|
-      offset = rand(Link.count)
-      @random_links << Link.first(:offset => offset)
-    end
-
+    @random_links = nil
+    ids = Link.pluck(:id).shuffle[0..num-1]
+    @random_links = Link.where(id: ids)
     return @random_links
   end
 end

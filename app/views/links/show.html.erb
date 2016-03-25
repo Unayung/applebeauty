@@ -1,17 +1,15 @@
-<div class="span12">
+<div class="col-xs-12">
   <%= render partial: "tool_box" %>
   <br>
 </div>
-<div class="span4">
+<div class="col-xs-12 col-sm-4">
   <%= render partial: "image_box" %>
 </div>
-<div class="span8">
+<div class="col-xs-12 col-sm-8">
   <div class="row">
-    <div class="span8">
+    <div class="col-xs-12">
       <div class="white-box">
-        <!-- <div id='video' style='display:block;width:610px;height:380px;'>
-        </div> -->
-        <video controls style="display:block;width:610px;height:350px;">
+        <video controls>
           <source src="<%= @link.clip %>" type="video/mp4">
         </video>
       </div>
@@ -19,7 +17,7 @@
   </div>
   <br>
   <div class="row">
-    <div class="span8">
+    <div class="col-xs-12">
       <span class="btn btn-warning" id="toggleInfo">看基本資料</span>
       <% if @link.link_type == "daily" %>
         <%= link_to("打開蘋果日報「今天我最美」", @link.url, :class => "btn btn-danger", :target => "_blank") %>
@@ -36,11 +34,11 @@
     </div>
   </div>
 </div>
-<div class="span12"><hr></div>
-<div class="span12">
+<div class="col-xs-12"><hr></div>
+<div class="col-xs-12">
   <div class="white-box">
     <div class="row">
-      <div class="span12" align="center"><h3>隨機推薦</h3></div>
+      <div class="col-xs-12" align="center"><h3>隨機推薦</h3></div>
       <br>
       <%= render partial: "random_result" %>
     </div>
@@ -56,7 +54,7 @@
     });
   });
     $("#check-result").click(function(){
-      $("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.dislikes.size, :class => "label label-info") %> 票</div>');
+      $("div.vote-result").replaceWith('<div class="votes">覺得她正的共 <%= content_tag(:span, @link.get_likes.size, :class => "label label-info") %> 票<br>覺得不正的共 <%= content_tag(:span, @link.get_dislikes.size, :class => "label label-info") %> 票</div>');
     })
 
     $("span#toggleInfo").click(function(){

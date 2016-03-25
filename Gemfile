@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "3.2.16"
+gem 'rails', '~> 4.2.6'
 gem "nokogiri"
 # Bundle edge Rails instead:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -8,13 +8,11 @@ gem "nokogiri"
 gem "mysql2"
 
 # gem "flowplayer", "= 0.1.3"
-gem "acts_as_votable", "~> 0.5.0"
-gem "cells"
+gem 'acts_as_votable', '~> 0.10.0'
 gem "sitemap_generator"
 # Gems used only for assets and not required
 # in production environments by default.
 
-gem "coffee-rails", "~> 3.2.1"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem "therubyracer", :platforms => :ruby
@@ -26,7 +24,7 @@ gem "uglifier", ">= 1.0.3"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "devise"
-
+gem "font-awesome-rails"
 gem "seo_helper", "~> 1.0"
 gem "open_graph_helper"
 
@@ -40,13 +38,13 @@ gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass'
 
 gem "bootstrap_helper", ">= 2.1.2"
-gem "simple_form", "2.0.3"
-gem "will_paginate", "3.0.3"
+gem "simple_form"
+gem "will_paginate"
+gem 'will_paginate-bootstrap'
 
 gem "high_voltage"
 
-gem "airbrake"
-gem "turbo-sprockets-rails3"
+# gem "airbrake"
 
 gem "ransack"
 
@@ -60,7 +58,7 @@ group :development do
   gem "capistrano"
   gem "capistrano-ext"
   gem "capistrano-unicorn", :require => false
-  gem "rvm-capistrano"
+  gem 'rvm-capistrano',  require: false
   gem "magic_encoding"
   gem "annotate"
   gem "powder"
@@ -68,6 +66,8 @@ group :development do
   gem "pry-remote"
   gem "guard-livereload"
   gem 'cape', '~> 1'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :production do

@@ -1,4 +1,20 @@
 # -*- encoding : utf-8 -*-
+# == Schema Information
+#
+# Table name: links
+#
+#  id         :integer          not null, primary key
+#  url        :string(255)
+#  title      :string(255)
+#  rate       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  clip       :string(255)
+#  detail     :text(65535)
+#  appeal     :boolean          default(FALSE)
+#  link_type  :string(255)      default("daily")
+#
+
 module LinksHelper
 
   def render_link_date(link)
@@ -22,17 +38,19 @@ module LinksHelper
 
   def render_next_link
     s = ""
-    s += content_tag(:i, "",:class => "icon-arrow-left")
-    s += " 後一天"
-    link_to(s.html_safe, @previous, :class => "btn left")
+    # s += content_tag(:i, "",:class => "icon-arrow-left")
+    # s += " 後一天"
+    s += fa_icon("arrow-circle-o-left 2x", text: "")
+    link_to(s.html_safe, @previous, :class => "btn btn-default left")
     # s.html_safe
   end
 
   def render_prev_link
     s = ""
-    s += "前一天 "
-    s += content_tag(:i, "",:class => "icon-arrow-right")
-    link_to(s.html_safe, @next, :class => "btn right")
+    # s += "前一天 "
+    # s += content_tag(:i, "",:class => "icon-arrow-right")
+    s += fa_icon("arrow-circle-o-right 2x", text: "", right: true)
+    link_to(s.html_safe, @next, :class => "btn btn-default right")
 
   end
 

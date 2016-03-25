@@ -531,7 +531,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
     color: #ff6a00;
     text-decoration: none;
 }
-.comment-header .span1 {
+.comment-header .col-xs-1 {
     font-size: 40px;
     margin-top: 20px;
 }
@@ -1106,7 +1106,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 .recent-post ul li {
     margin-bottom: 20px;
 }
-.recent-post .span1 {
+.recent-post .col-xs-1 {
     margin-right: 10px;
 }
 
@@ -1185,7 +1185,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
     margin-bottom: 20px;
     font-weight: bold;
 }
-.footer .twitter-widget .span1 {
+.footer .twitter-widget .col-xs-1 {
     margin-left: 0px;
 }
 .footer a {
@@ -1283,21 +1283,21 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
         padding-left: 20px;
     }
 
-    .recent-post .span1 {
+    .recent-post .col-xs-1 {
         margin-right: 0;
     }
 
-    .footer .span1, .sidebar .recent-post .span1 {
+    .footer .col-xs-1, .sidebar .recent-post .col-xs-1 {
         float: left;
         width: 85px;
     }
 
-    .footer .span1 img {
+    .footer .col-xs-1 img {
         width: 75px;
         float: left;
     }
 
-    .sidebar .recent-post .span1 img {
+    .sidebar .recent-post .col-xs-1 img {
         width: 75px;
         float: left;
         -webkit-border-radius: 2px;
@@ -1348,24 +1348,24 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
         width: 80%;
     }
 
-    .about-author .span2 {
+    .about-author .col-xs-2 {
         width: 20%;
         float: left;
         margin-right: 5%;
     }
 
-    .about-author .span6 {
+    .about-author .col-xs-6 {
         width: 75%;
         float: left;
     }
 
-    .comment-header .span1 {
+    .comment-header .col-xs-1 {
         width: 10%;
         float: left;
         margin-right: 5%;
     }
 
-    .comment-header .span5 {
+    .comment-header .col-xs-5 {
         width: 85%;
         float: left;
     }

@@ -9,7 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  clip       :string(255)
-#  detail     :text
+#  detail     :text(65535)
 #  appeal     :boolean          default(FALSE)
 #  link_type  :string(255)      default("daily")
 #
@@ -19,7 +19,7 @@ class Link < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :photos
   
-  scope :recent, order("title DESC", :limit => "11")
+  scope :recent, -> { order(:title => :desc)}
 
   acts_as_votable
 
@@ -58,7 +58,7 @@ class Link < ActiveRecord::Base
   end
 
   def calculate_rate
-    self.rate = self.likes.size - self.dislikes.size
+    self.rate = self.get_likes.size - self.get_dislikes.size
     self.save
   end
 
@@ -66,7 +66,7 @@ class Link < ActiveRecord::Base
     if voter.voted_on?(self)
       return false
     else
-      voter.likes(self)
+      self.liked_by(voter)
       self.calculate_rate
       return true
     end 
@@ -76,7 +76,7 @@ class Link < ActiveRecord::Base
     if voter.voted_on?(self)
       return false
     else
-      voter.dislikes(self)
+      self.disliked_by(voter)
       self.calculate_rate
       return true
     end 

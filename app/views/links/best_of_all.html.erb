@@ -1,14 +1,14 @@
 <% if @links.present? %>
 <% @links.each_with_index do |link, i| %>
-  <div class="span6 offset3">
+  <div class="col-xs-6 col-xs-offset-3">
     <div class="white-panel shadow">
       <div class="row">
-        <div class="span3">
+        <div class="col-xs-6">
           <%= link_to(link_path(link)) do %>
             <%= image_tag(link.photos.first.file, :width => 180) %>
           <% end %>
         </div>
-        <div class="span3">
+        <div class="col-xs-6">
           <div class="github-fork-ribbon-wrapper right">
             <div class="github-fork-ribbon"><a href="">累計第 <%= i+1 %> 名</a></div>
           </div>
@@ -27,7 +27,7 @@
   </div>
 <% end %>
 <% else %>
-<div class="span8 offset2">
+<div class="col-xs-8 offset2">
 <%= render partial: "no_result" %>
 </div>
 <% end %>

@@ -1,7 +1,6 @@
-<% @links.each do |link| %>
-  <div class="col-xs-12 col-sm-3 col-md-2 box">
+  <div class="col-xs-2 box">
     <%= link_to(link) do %>
-      <div class="innerbox" align="center">
+      <div class="innerbox">
         <% if link.link_type == "sports" %>
           <span class="label label-info label-large label-title complained"><%= render_link_title(link) %></span>
         <% else %>
@@ -13,8 +12,3 @@
       </div>
     <% end %>
   </div>
-<% end %>
-
-<div class="col-xs-12" align="center">
-  <%= will_paginate @links, renderer: BootstrapPagination::Rails %>
-</div>

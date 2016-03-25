@@ -1,18 +1,23 @@
-<div class="navbar navbar-fixed-top" style="opacity:1;">
-  <div class="navbar-inner top ">
-    <div class="container" align="center">
-      <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
-      <%= render partial: "common/search_form" %>
-      <div class="nav-collapse">
-        <%= render_list :class => "nav" do |li|
-          li << link_to("本週最優",best_of_the_week_links_path, :class => "no-shadow")
-          li << link_to("本月最優",best_of_the_month_links_path, :class => "no-shadow")
-          li << link_to("累計最優",best_of_all_links_path, :class => "no-shadow")
-          li << link_to("賣鬧專區", worst_of_all_links_path, :class => "no-shadow")
-        end %>
+<nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
       </div>
-      <div class="social"><%=  fb_like(request.url) %></div>
-      <%# render partial: "common/user_nav" %>
+      <div class="col-md-3">
+        <%= render partial: "common/search_form" %>
+      </div>
+      <div class="col-md-5">
+        <div class="menu-items">
+          <%= link_to("本週最優",best_of_the_week_links_path, :class => "no-shadow") %> |
+          <%= link_to("本月最優",best_of_the_month_links_path, :class => "no-shadow") %> |
+          <%= link_to("累計最優",best_of_all_links_path, :class => "no-shadow") %> |
+          <%= link_to("賣鬧專區", worst_of_all_links_path, :class => "no-shadow") %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="social"><%=  fb_like(request.url) %></div>
+      </div>
     </div>
   </div>
-</div>
+</nav>

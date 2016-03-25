@@ -1,13 +1,13 @@
 <% @links.each_with_index do |link, i| %>
-  <div class="span6 offset3">
+  <div class="col-xs-6 col-xs-offset-3">
     <div class="white-panel shadow">
       <div class="row">
-        <div class="span3">
+        <div class="col-xs-6">
           <%= link_to(link_path(link)) do %>
             <%= image_tag(link.photos.first.file, :width => 180) %>
           <% end %>
         </div>
-        <div class="span3">
+        <div class="col-xs-6">
           <br>
           <br>
           <span class="girl-name"><%= render_link_girl_name(link) %></span>

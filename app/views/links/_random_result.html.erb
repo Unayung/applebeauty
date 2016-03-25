@@ -1,7 +1,7 @@
         <% @random_links.each do |link| %>
-          <div class="span2 box">
+          <div class="col-xs-2 box">
             <%= link_to(link) do %>
-              <div class="innerbox">
+              <div class="innerbox" align="center">
                 <% if link.link_type == "sports" %>
                   <span class="label label-info label-large label-title complained"><%= render_link_title(link) %></span>
                 <% else %>

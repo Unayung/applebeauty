@@ -2,6 +2,23 @@
 @import "bootstrap";
 @import "bootstrap-override";
 
+video {  
+   width:100%; 
+   max-width:800px; 
+   height:auto; 
+}
+
+nav{
+  margin-bottom: 20px;
+}
+
+.menu-items{
+  margin-top: 5px;
+}
+
+form.form-inline{
+  margin-top: 5px;
+}
 //
 .no-shadow{
   color: #000 !important;
@@ -84,16 +101,12 @@
   top:100px;
 }
 
-input.search-query {
-  width: 150px !important;
-}
-
 span.girl-name{
   font-size: 20px;
 }
 
 #check-result {
-  width: 100px;
+  width: 120px;
   position: relative;
 }
 
