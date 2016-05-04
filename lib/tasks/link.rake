@@ -72,22 +72,26 @@ namespace :link do
     puts l.title
     page_url = URI::encode(l.url)
     puts page_url
-    page = Nokogiri::HTML(open(page_url))
-    image = page.css('div.articulum > figure > a')
-    video = page.css('script').text.match(/http.*\.mp4/)
-    text = page.css('p#introid').inner_html
-    puts text
-    if video
-      l.clip = video[0]
+
+    if Link.where(:url => page_url)
+      puts "已抓"
+    else
+      page = Nokogiri::HTML(open(page_url))
+      image = page.css('div.articulum > figure > a')
+      video = page.css('script').text.match(/http.*\.mp4/)
+      text = page.css('p#introid').inner_html
+      puts text
+      if video
+        l.clip = video[0]
+      end
+      l.detail = text
+      photo = Photo.new
+      puts image.attr('href').value
+      photo.remote_file_url = image.attr('href').value
+      l.save
+      photo.link_id = l.id
+      photo.save
     end
-    l.detail = text
-    photo = Photo.new
-    puts image.attr('href').value
-    photo.remote_file_url = image.attr('href').value
-    l.save
-    photo.link_id = l.id
-    photo.save
-    
   end
 
   task :get_sports_girl_link => :environment do
