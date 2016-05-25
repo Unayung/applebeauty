@@ -73,7 +73,7 @@ namespace :link do
     page_url = URI::encode(l.url)
     puts page_url
 
-    if Link.where(:url => page_url).size > 0
+    if Link.where(:title => l.title).size > 0
       puts "已抓"
     else
       page = Nokogiri::HTML(open(page_url))
