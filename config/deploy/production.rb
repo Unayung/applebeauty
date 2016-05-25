@@ -16,7 +16,7 @@ set :scm_verbose, true
 set :use_sudo, false
 set :user, "apps" 
 set :group, "apps" 
-default_environment["PATH"] = "/home/apps/.rvm/gems/ruby-1.9.3-p327/bin:/home/apps/.rvm/gems/ruby-1.9.3-p327@global/bin:/home/apps/.rvm/rubies/ruby-1.9.3-p327/bin:/home/apps/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# default_environment["PATH"] = "/home/apps/.rvm/gems/ruby-1.9.3-p327/bin:/home/apps/.rvm/gems/ruby-1.9.3-p327@global/bin:/home/apps/.rvm/rubies/ruby-1.9.3-p327/bin:/home/apps/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 namespace :deploy do
   desc "restart" 
   task :restart do
