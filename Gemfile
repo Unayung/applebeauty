@@ -4,7 +4,7 @@ gem 'rails', '~> 4.2.6'
 gem "nokogiri"
 # Bundle edge Rails instead:
 # gem "rails", :git => "git://github.com/rails/rails.git"
-
+gem 'messenger-bot'
 gem "mysql2"
 
 # gem "flowplayer", "= 0.1.3"

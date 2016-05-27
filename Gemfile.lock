@@ -160,6 +160,7 @@ GEM
     magic_encoding (0.0.2)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    messenger-bot (1.0.2)
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -307,6 +308,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   magic_encoding
+  messenger-bot
   mysql2
   nokogiri
   open_graph_helper
@@ -329,4 +331,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.10.5
+   1.12.4
