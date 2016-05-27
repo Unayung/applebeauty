@@ -5,6 +5,9 @@ class MessengerBotController < ActionController::Base
       sender.reply({ text: "Reply: #{event['message']['text']}" })
     elsif event['message']['text'] == "456"
       sender.reply({ text: "從三小" })
+    elsif event['message']['text'] == "link"
+      link = Link.last
+      sender.reply({ text: link.title + "/" + link.url })
     end
   end
 
