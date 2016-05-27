@@ -1,7 +1,11 @@
 class MessengerBotController < ActionController::Base
   def message(event, sender)
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-    sender.reply({ text: "Reply: #{event['message']['text']}" })
+    if event['message']['text'] == "123"
+      sender.reply({ text: "Reply: #{event['message']['text']}" })
+    elsif event['message']['text'] == "456"
+      sender.reply({ text: "從三小" })
+    end
   end
 
   def delivery(event, sender)
