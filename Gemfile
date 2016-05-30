@@ -57,7 +57,7 @@ gem "colorbox-rails"
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
-  gem "capistrano-unicorn", :require => false
+  # gem "capistrano-unicorn", :require => false
   gem 'capistrano-rbenv'
   gem "magic_encoding"
   gem "annotate"
@@ -84,7 +84,7 @@ end
 # gem "jbuilder"
 
 # Use unicorn as the app server
-gem "unicorn"
+# gem "unicorn"
 
 # Deploy with Capistrano
 # gem "capistrano"
