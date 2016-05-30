@@ -10,7 +10,7 @@ Cape do
   mirror_rake_tasks :link
 end
 
-set :rbenv_ruby_version, "2.2.2"
+set :rbenv_ruby_version, "2.2.3"
 set :stages, %w(staging production)
 set :default_stage, "production"
 
@@ -25,7 +25,7 @@ set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 set :use_sudo, false
 set :whenever_command, "bundle exec whenever"
-
+# set :bundle_flags, "--path #{shared_path}/bundle --quiet"
 namespace :my_tasks do
   task :symlink, :roles => [:web] do
     run "mkdir -p #{deploy_to}/shared/log"
