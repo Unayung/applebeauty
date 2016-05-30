@@ -1,15 +1,16 @@
 # -*- encoding : utf-8 -*-
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano' #Using bundler with Capistrano
-require "rvm/capistrano"   # Load RVM's capistrano plugin.
 require "whenever/capistrano"
 require 'cape'
+require "capistrano-rbenv"
 
 Cape do
   # Create Capistrano recipes for all Rake tasks.
   mirror_rake_tasks :link
 end
 
+set :rbenv_ruby_version, "2.2.2"
 set :stages, %w(staging production)
 set :default_stage, "production"
 
@@ -23,7 +24,6 @@ set :runner, "apps"
 set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 set :use_sudo, false
-set :rvm_ruby_string, '2.2.2'
 set :whenever_command, "bundle exec whenever"
 
 namespace :my_tasks do
