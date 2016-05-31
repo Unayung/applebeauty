@@ -11,11 +11,8 @@ set :application, "applebeauty"
 set :repo_url,  "git@github.com:Unayung/applebeauty.git"
 set :deploy_user, 'deploy'
 set :conditionally_migrate, true
-# set :delayed_job_command, "bin/delayed_job"
-# set :whenever_command, "bundle exec whenever"
-# set :delayed_job_prefix, :pgl
+set :rbenv_map_bins, %w{rake gem bundle ruby rails whenever}
 set :rbenv_type, :user
-# set :rbenv_path, '/home/apps/.rbenv/'
 set :rbenv_ruby, "2.2.3"
 # Cape do
 #   # Create Capistrano recipes for all Rake tasks.
