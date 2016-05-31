@@ -1,8 +1,9 @@
-set :stage, :production
+set :stage, :live
 set :branch, "master"
 set :server_name, "ab.unayung.cc"
 server 'ab.unayung.cc', user: 'apps', roles: %w{web app db}, primary: true
 set :deploy_to, "/home/apps/applebeauty" 
+set :deploy_user, 'apps'
 set :rails_env, :production
 # -*- encoding : utf-8 -*-
 # require 'capistrano-unicorn'

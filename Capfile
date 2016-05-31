@@ -11,8 +11,8 @@
 # load 'deploy/assets'
 require 'capistrano/setup'
 require 'capistrano/deploy'
-require 'capistrano/rbenv'
 require 'capistrano/bundler'
+require 'capistrano/rbenv'
 require 'capistrano/rails'
 require "whenever/capistrano"
 # require 'capistrano/delayed-job'

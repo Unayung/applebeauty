@@ -6,10 +6,8 @@
 # require "capistrano-rbenv"
 
 lock '3.5.0'
-set :rails_env, 'production'
 set :application, "applebeauty"
 set :repo_url,  "git@github.com:Unayung/applebeauty.git"
-set :deploy_user, 'deploy'
 set :conditionally_migrate, true
 set :rbenv_map_bins, %w{rake gem bundle ruby rails whenever}
 set :rbenv_type, :user
@@ -32,20 +30,20 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-set :stages, %w(staging production)
-set :default_stage, "production"
+# set :stages, %w(staging production)
+# set :default_stage, "production"
 
-# default_environment["RAILS_ENV"] = "production"
+# # default_environment["RAILS_ENV"] = "production"
 
-set :application, "applebeauty"
-set :repo_url,  "git@github.com:Unayung/applebeauty.git"
-set :scm, :git
-set :user, "apps"
-set :runner, "apps"
-set :deploy_via, :remote_cache
-set :git_shallow_clone, 1
-set :use_sudo, false
-set :whenever_command, "bundle exec whenever"
+# set :application, "applebeauty"
+# set :repo_url,  "git@github.com:Unayung/applebeauty.git"
+# set :scm, :git
+# set :user, "apps"
+# set :runner, "apps"
+# set :deploy_via, :remote_cache
+# set :git_shallow_clone, 1
+# set :use_sudo, false
+# set :whenever_command, "bundle exec whenever"
 # set :bundle_flags, "--path #{shared_path}/bundle --quiet"
 # namespace :my_tasks do
 #   task :symlink, :roles => [:web] do
@@ -98,54 +96,54 @@ set :whenever_command, "bundle exec whenever"
 #   end
 # end
 
-namespace :sitemap do
+# namespace :sitemap do
 
-  desc "refresh sitemap"
-  task :refresh do
-    run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
-  end
+#   desc "refresh sitemap"
+#   task :refresh do
+#     run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
+#   end
 
-  desc "refresh sitemap without ping"
-  task :refresh_without_ping do
-    run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake -s sitemap:refresh"
-  end
+#   desc "refresh sitemap without ping"
+#   task :refresh_without_ping do
+#     run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake -s sitemap:refresh"
+#   end
 
-  desc "copy_old_sitemap"
-  task :copy_old_sitemap do
-      run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
-  end
-end
+#   desc "copy_old_sitemap"
+#   task :copy_old_sitemap do
+#       run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
+#   end
+# end
 
-namespace :remote_rake do
-  desc "Run a task on remote servers, ex: cap staging rake:invoke task=cache:clear"
-  task :invoke do
-    run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rake #{ENV['task']}"
-  end
-end
-namespace :deploy do
+# namespace :remote_rake do
+#   desc "Run a task on remote servers, ex: cap staging rake:invoke task=cache:clear"
+#   task :invoke do
+#     run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rake #{ENV['task']}"
+#   end
+# end
+# namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
+#   after :restart, :clear_cache do
+#     on roles(:web), in: :groups, limit: 3, wait: 10 do
+#       # Here we can do anything such as:
+#       # within release_path do
+#       #   execute :rake, 'cache:clear'
+#       # end
+#     end
+#   end
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
-      # execute "wget -O /dev/null #{fetch(:server_name)} 2>/dev/null"
-    end
-  end
-end
+#   desc 'Restart application'
+#   task :restart do
+#     on roles(:app), in: :sequence, wait: 5 do
+#       # Your restart mechanism here, for example:
+#       execute :touch, release_path.join('tmp/restart.txt')
+#       # execute "wget -O /dev/null #{fetch(:server_name)} 2>/dev/null"
+#     end
+#   end
+# end
 
-after "deploy:finished", "deploy:restart"
-# after "deploy:finalize_update", "my_tasks:symlink"
-after :deploy, "deploy:cleanup"
-after :deploy, "whenever:update_crontab"
-#after "deploy:restart", "sphinx:rebuild"
-#after "deploy:restart", "sphinx:restart"
+# after "deploy:finished", "deploy:restart"
+# # after "deploy:finalize_update", "my_tasks:symlink"
+# after :deploy, "deploy:cleanup"
+# after :deploy, "whenever:update_crontab"
+# #after "deploy:restart", "sphinx:rebuild"
+# #after "deploy:restart", "sphinx:restart"
