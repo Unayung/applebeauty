@@ -28,7 +28,7 @@ gem "font-awesome-rails"
 gem "seo_helper", "~> 1.0"
 gem "open_graph_helper"
 
-gem 'rmagick'
+# gem 'rmagick'
 gem "carrierwave"
 gem "carrierwave-meta"
 
@@ -58,7 +58,7 @@ group :development do
   gem "capistrano"
   gem "capistrano-ext"
   # gem "capistrano-unicorn", :require => false
-  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv', '~> 2.0'
   gem "magic_encoding"
   gem "annotate"
   gem "powder"

@@ -14,8 +14,9 @@ set :conditionally_migrate, true
 # set :delayed_job_command, "bin/delayed_job"
 # set :whenever_command, "bundle exec whenever"
 # set :delayed_job_prefix, :pgl
-set :rbenv_path, '/home/apps/.rbenv/'
-set :rbenv_ruby_version, "2.2.3"
+set :rbenv_type, :user
+# set :rbenv_path, '/home/apps/.rbenv/'
+set :rbenv_ruby, "2.2.3"
 # Cape do
 #   # Create Capistrano recipes for all Rake tasks.
 #   mirror_rake_tasks :link
