@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 
 class PhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   include CarrierWave::Meta
   
   def id_partition(attachment)

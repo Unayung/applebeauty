@@ -28,7 +28,7 @@ gem "font-awesome-rails"
 gem "seo_helper", "~> 1.0"
 gem "open_graph_helper"
 
-gem 'rmagick'
+gem "mini_magick"
 gem "carrierwave"
 gem "carrierwave-meta"
 

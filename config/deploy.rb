@@ -11,7 +11,7 @@ set :repo_url,  "git@github.com:Unayung/applebeauty.git"
 set :conditionally_migrate, true
 set :rbenv_map_bins, %w{rake gem bundle ruby rails whenever}
 set :rbenv_type, :user
-set :rbenv_ruby, "2.2.3"
+set :rbenv_ruby, "2.3.1"
 # Cape do
 #   # Create Capistrano recipes for all Rake tasks.
 #   mirror_rake_tasks :link
