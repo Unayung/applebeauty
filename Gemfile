@@ -59,6 +59,7 @@ group :development do
   gem "capistrano-ext"
   # gem "capistrano-unicorn", :require => false
   gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
   gem "magic_encoding"
   gem "annotate"
   gem "powder"

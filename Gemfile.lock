@@ -67,6 +67,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
     capistrano-harrow (0.5.1)
@@ -291,6 +294,7 @@ DEPENDENCIES
   bootstrap_helper (>= 2.1.2)
   cape (~> 1)
   capistrano
+  capistrano-bundler (~> 1.1.2)
   capistrano-ext
   capistrano-rbenv (~> 2.0)
   carrierwave
