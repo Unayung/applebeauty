@@ -1,24 +1,46 @@
 # -*- encoding : utf-8 -*-
-require 'capistrano/ext/multistage'
-require 'bundler/capistrano' #Using bundler with Capistrano
-require "whenever/capistrano"
-require 'cape'
-require "capistrano-rbenv"
+# require 'capistrano/ext/multistage'
+# require 'bundler/capistrano' #Using bundler with Capistrano
+# require "whenever/capistrano"
+# require 'cape'
+# require "capistrano-rbenv"
 
-Cape do
-  # Create Capistrano recipes for all Rake tasks.
-  mirror_rake_tasks :link
-end
-
+lock '3.5.0'
+set :rails_env, 'production'
+set :application, "applebeauty"
+set :repo_url,  "git@github.com:Unayung/applebeauty.git"
+set :deploy_user, 'deploy'
+set :conditionally_migrate, true
+# set :delayed_job_command, "bin/delayed_job"
+# set :whenever_command, "bundle exec whenever"
+# set :delayed_job_prefix, :pgl
 set :rbenv_path, '/home/apps/.rbenv/'
 set :rbenv_ruby_version, "2.2.3"
+# Cape do
+#   # Create Capistrano recipes for all Rake tasks.
+#   mirror_rake_tasks :link
+# end
+set :log_level, :info
+
+# Default value for :pty is false
+set :pty, true
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/config.yml', 'config/schedule.rb')
+# Default value for linked_dirs is []
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+set :keep_releases, 5
+
 set :stages, %w(staging production)
 set :default_stage, "production"
 
-default_environment["RAILS_ENV"] = "production"
+# default_environment["RAILS_ENV"] = "production"
 
 set :application, "applebeauty"
-set :repository,  "git@github.com:Unayung/applebeauty.git"
+set :repo_url,  "git@github.com:Unayung/applebeauty.git"
 set :scm, :git
 set :user, "apps"
 set :runner, "apps"
@@ -27,56 +49,56 @@ set :git_shallow_clone, 1
 set :use_sudo, false
 set :whenever_command, "bundle exec whenever"
 # set :bundle_flags, "--path #{shared_path}/bundle --quiet"
-namespace :my_tasks do
-  task :symlink, :roles => [:web] do
-    run "mkdir -p #{deploy_to}/shared/log"
-    run "mkdir -p #{deploy_to}/shared/pids"
+# namespace :my_tasks do
+#   task :symlink, :roles => [:web] do
+#     run "mkdir -p #{deploy_to}/shared/log"
+#     run "mkdir -p #{deploy_to}/shared/pids"
 
-    symlink_hash = {
-      "#{shared_path}/config/database.yml"   => "#{release_path}/config/database.yml",
-      "#{shared_path}/config/config.yml"    => "#{release_path}/config/config.yml",
-      "#{shared_path}/uploads"              => "#{release_path}/public/uploads",
-      "#{shared_path}/config/schedule.rb"   => "#{release_path}/config/schedule.rb",
-    #  "#{shared_path}/db/sphinx"            => "#{release_path}/db/sphinx"
-    #  "#{shared_path}/config/newrelic.yml"  => "#{release_path}/config/newrelic.yml",
-    #  "#{shared_path}/config/redis.yml"     => "#{release_path}/config/redis.yml",
-    #  "#{shared_path}/config/mailman.yml"     => "#{release_path}/config/mailman.yml",
-    }
+#     symlink_hash = {
+#       "#{shared_path}/config/database.yml"   => "#{release_path}/config/database.yml",
+#       "#{shared_path}/config/config.yml"    => "#{release_path}/config/config.yml",
+#       "#{shared_path}/uploads"              => "#{release_path}/public/uploads",
+#       "#{shared_path}/config/schedule.rb"   => "#{release_path}/config/schedule.rb",
+#     #  "#{shared_path}/db/sphinx"            => "#{release_path}/db/sphinx"
+#     #  "#{shared_path}/config/newrelic.yml"  => "#{release_path}/config/newrelic.yml",
+#     #  "#{shared_path}/config/redis.yml"     => "#{release_path}/config/redis.yml",
+#     #  "#{shared_path}/config/mailman.yml"     => "#{release_path}/config/mailman.yml",
+#     }
 
-    symlink_hash.each do |source, target|
-      run "ln -sf #{source} #{target}"
-    end
-  end
+#     symlink_hash.each do |source, target|
+#       run "ln -sf #{source} #{target}"
+#     end
+#   end
 
-end
+# end
 
-set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
+# set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
 
-namespace :deploy do
-  namespace :assets do
+# namespace :deploy do
+#   namespace :assets do
 
-    desc <<-DESC
-      Run the asset precompilation rake task. You can specify the full path \
-      to the rake executable by setting the rake variable. You can also \
-      specify additional environment variables to pass to rake via the \
-      asset_env variable. The defaults are:
+#     desc <<-DESC
+#       Run the asset precompilation rake task. You can specify the full path \
+#       to the rake executable by setting the rake variable. You can also \
+#       specify additional environment variables to pass to rake via the \
+#       asset_env variable. The defaults are:
 
-        set :rake,      "rake"
-        set :rails_env, "production"
-        set :asset_env, "RAILS_GROUPS=assets"
-        set :assets_dependencies, fetch(:assets_dependencies) + %w(config/locales/js)
-    DESC
-    task :precompile, :roles => :web, :except => { :no_release => true } do
-      from = source.next_revision(current_revision)
-      if capture("cd #{latest_release} && #{source.local.log(from)} #{assets_dependencies.join ' '} | wc -l").to_i > 0
-        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
+#         set :rake,      "rake"
+#         set :rails_env, "production"
+#         set :asset_env, "RAILS_GROUPS=assets"
+#         set :assets_dependencies, fetch(:assets_dependencies) + %w(config/locales/js)
+#     DESC
+#     task :precompile, :roles => :web, :except => { :no_release => true } do
+#       from = source.next_revision(current_revision)
+#       if capture("cd #{latest_release} && #{source.local.log(from)} #{assets_dependencies.join ' '} | wc -l").to_i > 0
+#         run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+#       else
+#         logger.info "Skipping asset pre-compilation because there were no asset changes"
+#       end
+#     end
 
-  end
-end
+#   end
+# end
 
 namespace :sitemap do
 
@@ -102,8 +124,29 @@ namespace :remote_rake do
     run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rake #{ENV['task']}"
   end
 end
+namespace :deploy do
 
-after "deploy:finalize_update", "my_tasks:symlink"
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      execute :touch, release_path.join('tmp/restart.txt')
+      # execute "wget -O /dev/null #{fetch(:server_name)} 2>/dev/null"
+    end
+  end
+end
+
+after "deploy:finished", "deploy:restart"
+# after "deploy:finalize_update", "my_tasks:symlink"
 after :deploy, "deploy:cleanup"
 after :deploy, "whenever:update_crontab"
 #after "deploy:restart", "sphinx:rebuild"
