@@ -16,6 +16,7 @@ set :rbenv_ruby, "2.3.1"
 #   # Create Capistrano recipes for all Rake tasks.
 #   mirror_rake_tasks :link
 # end
+set :format , :pretty
 set :log_level, :info
 
 # Default value for :pty is false
