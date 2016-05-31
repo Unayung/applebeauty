@@ -10,6 +10,7 @@ Cape do
   mirror_rake_tasks :link
 end
 
+set :rbenv_path, '/home/apps/.rbenv/'
 set :rbenv_ruby_version, "2.2.3"
 set :stages, %w(staging production)
 set :default_stage, "production"
