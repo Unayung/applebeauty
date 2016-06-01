@@ -58,6 +58,7 @@ group :development do
   gem "capistrano"
   gem "capistrano-ext"
   # gem "capistrano-unicorn", :require => false
+  gem 'capistrano-passenger'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1'

@@ -15,6 +15,7 @@ require 'capistrano/bundler'
 require 'capistrano/rbenv'
 require 'capistrano/rails'
 require "whenever/capistrano"
+require 'capistrano/passenger'
 # require 'capistrano/delayed-job'
 # require 'slackistrano/capistrano'
 
