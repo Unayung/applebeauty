@@ -18,7 +18,7 @@ set :rbenv_ruby, "2.3.1"
 # end
 set :format , :pretty
 set :log_level, :info
-
+set :bundle_path, -> { shared_path.join('vendor/bundle') }
 # Default value for :pty is false
 set :pty, true
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/config.yml', 'config/schedule.rb')
