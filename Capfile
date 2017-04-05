@@ -17,6 +17,8 @@ require 'capistrano/rails'
 require "whenever/capistrano"
 require 'capistrano/passenger'
 require 'capistrano/rake'
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
 # require 'capistrano/delayed-job'
 # require 'slackistrano/capistrano'
 

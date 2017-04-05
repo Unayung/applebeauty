@@ -22,8 +22,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def default_url
      "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
-
-  process :store_meta
   
   version :tiny do
     process :resize_to_fill => [135, 215]
