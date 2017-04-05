@@ -2,7 +2,6 @@
 
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include CarrierWave::Meta
   
   def id_partition(attachment)
     case id = attachment.id
