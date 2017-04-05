@@ -25,7 +25,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   
   version :tiny do
     process :resize_to_fill => [135, 215]
-    process :store_meta
   end
 
 end
