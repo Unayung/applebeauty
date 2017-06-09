@@ -1,15 +1,17 @@
 <div class="row">
   <div class="col-xs-12 masonry-container">
-    <div class="box grid-item-bigger" style="">
-      <%= link_to(@todays_link) do %>
-        <div class="innerbox" align="center">
-          <span class="label label-info label-large label-title today-label"><%= render_link_title(@todays_link) %></span>
-          <div align="center">
-            <%= image_tag(@todays_link.photos.first.file) %>
+    <% if @query_string.nil? %>
+      <div class="box grid-item-bigger" style="">
+        <%= link_to(@todays_link) do %>
+          <div class="innerbox" align="center">
+            <span class="label label-info label-large label-title today-label"><%= render_link_title(@todays_link) %></span>
+            <div align="center">
+              <%= image_tag(@todays_link.photos.first.file) %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
     <% @links.each do |link| %>
       <div class="box grid-item" style="">
         <%= link_to(link) do %>
