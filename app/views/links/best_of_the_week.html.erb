@@ -1,33 +1,35 @@
-<% if @links.present? %>
-<% @links.each_with_index do |link, i| %>
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <div class="white-panel shadow">
-      <div class="row">
-        <div class="col-xs-6">
-          <%= link_to(link_path(link)) do %>
-            <%= image_tag(link.photos.first.file, :width => 180) %>
-          <% end %>
-        </div>
-        <div class="col-xs-6">
-          <div class="github-fork-ribbon-wrapper right">
-            <div class="github-fork-ribbon"><a href="">本週第 <%= i+1 %> 名</a></div>
+<div class="row">
+  <% if @links.present? %>
+  <% @links.each_with_index do |link, i| %>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="white-panel shadow">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= link_to(link_path(link)) do %>
+              <%= image_tag(link.photos.first.file, :width => 180) %>
+            <% end %>
           </div>
-          <br>
-          <span class="girl-name"><%= render_link_girl_name(link) %></span>
-          <div>
-            <span class="red">好評指數 <%= link.rate %></span>
-          </div>
-          <div>
-            <%= link.detail.html_safe %>
+          <div class="col-xs-6">
+            <div class="github-fork-ribbon-wrapper right">
+              <div class="github-fork-ribbon"><a href="">本週第 <%= i+1 %> 名</a></div>
+            </div>
+            <br>
+            <span class="girl-name"><%= render_link_girl_name(link) %></span>
+            <div>
+              <span class="red">好評指數 <%= link.rate %></span>
+            </div>
+            <div>
+              <%= link.detail.html_safe %>
+            </div>
           </div>
         </div>
       </div>
+      <br>
     </div>
-    <br>
+  <% end %>
+  <% else %>
+  <div class="col-xs-12">
+  <%= render partial: "no_result" %>
   </div>
-<% end %>
-<% else %>
-<div class="col-xs-12">
-<%= render partial: "no_result" %>
+  <% end %>
 </div>
-<% end %>

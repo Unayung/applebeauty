@@ -18,8 +18,8 @@ gem "sitemap_generator"
 # gem "therubyracer", :platforms => :ruby
 
 gem "uglifier", ">= 1.0.3"
-
-
+gem 'friendly_id', '~> 5.1.0'
+gem 'masonry-rails'
 # gem "turbolinks"
 gem "jquery-rails"
 gem "jquery-ui-rails"

@@ -16,6 +16,8 @@
 
 # -*- encoding : utf-8 -*-
 class Link < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   # attr_accessible :title, :body
   has_many :photos
   

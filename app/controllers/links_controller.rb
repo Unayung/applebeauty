@@ -32,7 +32,10 @@ class LinksController < ApplicationController
       @query_string = params[:q][:detail_cont]
       @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
     else
-      @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
+      @todays_link = Link.recent.first
+      @links = Link.recent.where("id <> ?", Link.recent.first.id)
+      # @links = Link.recent.reject { |r| r.id == Link.recent.first.id }
+      @links = @links.paginate(:per_page => 18, :page => params[:page])
     end
   end
 
@@ -102,7 +105,7 @@ class LinksController < ApplicationController
   protected
 
   def find_link
-    @link = Link.find(params[:id])
+    @link = Link.friendly.find(params[:id])
   end
 
   def find_voter

@@ -4,6 +4,7 @@
 //= require jquery-ui
 //= require jquery-fileupload
 //= require jquery.onecarousel.min
+//= require masonry/jquery.masonry
 //= require bootstrap
 //= require colorbox-rails
 

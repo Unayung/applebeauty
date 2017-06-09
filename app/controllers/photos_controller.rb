@@ -59,6 +59,6 @@ class PhotosController < ApplicationController
   protected
 
   def find_link
-    @link = Link.find(params[:link_id])
+    @link = Link.friendly.find(params[:link_id])
   end
 end

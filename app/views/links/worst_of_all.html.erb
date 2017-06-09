@@ -1,26 +1,28 @@
-<% @links.each_with_index do |link, i| %>
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <div class="white-panel shadow">
-      <div class="row">
-        <div class="col-xs-6">
-          <%= link_to(link_path(link)) do %>
-            <%= image_tag(link.photos.first.file, :width => 180) %>
-          <% end %>
-        </div>
-        <div class="col-xs-6">
-          <br>
-          <br>
-          <span class="girl-name"><%= render_link_girl_name(link) %></span>
-          <div>
-            <span class="red">賣鬧指數 <%= link.rate.abs %></span>
+<div class="row">
+  <% @links.each_with_index do |link, i| %>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="white-panel shadow">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= link_to(link_path(link)) do %>
+              <%= image_tag(link.photos.first.file, :width => 180) %>
+            <% end %>
           </div>
-          <br>
-          <div>
-            <%= link.detail.html_safe %>
+          <div class="col-xs-6">
+            <br>
+            <br>
+            <span class="girl-name"><%= render_link_girl_name(link) %></span>
+            <div>
+              <span class="red">賣鬧指數 <%= link.rate.abs %></span>
+            </div>
+            <br>
+            <div>
+              <%= link.detail.html_safe %>
+            </div>
           </div>
         </div>
       </div>
+      <br>
     </div>
-    <br>
-  </div>
-<% end %>
+  <% end %>
+</div>

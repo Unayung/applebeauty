@@ -2,6 +2,12 @@
 @import "bootstrap";
 @import "bootstrap-override";
 
+.grid-item { width: 160px; }
+.grid-item-bigger { width: 520px; }
+.today-label{
+  width: 384px;
+}
+
 video {  
    width:100%; 
    max-width:800px; 
