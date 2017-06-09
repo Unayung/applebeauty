@@ -30,12 +30,12 @@ class LinksController < ApplicationController
     # @links = @links.paginate(:page => params[:page], :per_page => 18)
     if params[:q].present?
       @query_string = params[:q][:detail_cont]
-      @links = @search.result.recent.paginate(:per_page => 18, :page => params[:page])
+      @links = @search.result.recent.paginate(:per_page => 30, :page => params[:page])
     else
       @todays_link = Link.recent.first
       @links = Link.recent.where("id <> ?", Link.recent.first.id)
       # @links = Link.recent.reject { |r| r.id == Link.recent.first.id }
-      @links = @links.paginate(:per_page => 18, :page => params[:page])
+      @links = @links.paginate(:per_page => 30, :page => params[:page])
     end
   end
 

@@ -1248,14 +1248,34 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 .footer .about dl dd, .our-office dl dd {    
     width: 65%;
 }
-
 /* Landscape phones and down */
-@media (max-width: 480px)  {
+@media (max-width: 375px)  {
+    .grid-item-bigger{
+        width: 390px !important;
+    }
 
+    .grid-item{
+        width: 390px !important;
+    }
 }
+
+@media (max-width: 414px)  {
+    .grid-item-bigger{
+        width: 390px !important;
+    }
+
+    .grid-item{
+        width: 390px !important;
+    }
+}
+
+
    
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+    .grid-item-bigger{
+        
+    }
     /* Header */
     .services .well {
         margin-bottom: 30px;
