@@ -53,6 +53,10 @@ gem "compass-rails"
 gem "jquery-fileupload-rails", "= 0.4.0"
 gem "colorbox-rails"
 # end
+gem "pry-rails"
+gem "pry-byebug"
+gem "pry-nav"
+gem "pry-remote"
 
 group :development do
   gem "capistrano"
