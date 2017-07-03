@@ -55,8 +55,8 @@ gem "colorbox-rails"
 # end
 gem "pry-rails"
 gem "pry-byebug"
-gem "pry-nav"
-gem "pry-remote"
+# gem "pry-nav"
+# gem "pry-remote"
 
 group :development do
   gem "capistrano"
