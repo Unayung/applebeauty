@@ -36,4 +36,9 @@ Applebeauty::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.active_record.raise_in_transactional_callbacks = true
+  CarrierWave.configure do |config|
+    config.ignore_integrity_errors = false
+    config.ignore_processing_errors = false
+    config.ignore_download_errors = false
+  end
 end

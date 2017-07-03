@@ -66,6 +66,8 @@ group :development do
   gem "magic_encoding"
   gem "annotate"
   gem "powder"
+  gem "pry-rails"
+  gem "pry-byebug"
   gem "pry-nav"
   gem "pry-remote"
   gem "guard-livereload"
