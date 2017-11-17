@@ -55,6 +55,11 @@ gem "colorbox-rails"
 # end
 
 group :development do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'awesome_print', require: false
+  gem 'hirb',          require: false
+  gem 'hirb-unicode',  require: false
   gem "capistrano"
   gem "capistrano-ext"
   # gem "capistrano-unicorn", :require => false
@@ -66,10 +71,6 @@ group :development do
   gem "magic_encoding"
   gem "annotate"
   gem "powder"
-  gem "pry-rails"
-  gem "pry-byebug"
-  gem "pry-nav"
-  gem "pry-remote"
   gem "guard-livereload"
   gem 'cape', '~> 1'
   gem "better_errors"

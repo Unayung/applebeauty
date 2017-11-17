@@ -44,6 +44,7 @@ GEM
     arel (6.0.4)
     autoprefixer-rails (7.1.1.2)
       execjs
+    awesome_print (1.8.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -149,6 +150,10 @@ GEM
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
     high_voltage (3.0.0)
+    hirb (0.7.3)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
     http_parser.rb (0.6.0)
     i18n (0.8.4)
     jquery-fileupload-rails (0.4.0)
@@ -204,13 +209,8 @@ GEM
     pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
-    pry-nav (0.2.4)
-      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
-    pry-remote (0.1.8)
-      pry (~> 0.9)
-      slop (~> 3.0)
     rack (1.6.8)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -285,6 +285,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    unicode-display_width (0.1.1)
     warden (1.2.7)
       rack (>= 1.0)
     whenever (0.9.7)
@@ -299,6 +300,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   annotate
+  awesome_print
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -320,6 +322,8 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   guard-livereload
   high_voltage
+  hirb
+  hirb-unicode
   jquery-fileupload-rails (= 0.4.0)
   jquery-rails
   jquery-ui-rails
@@ -332,9 +336,7 @@ DEPENDENCIES
   open_graph_helper
   powder
   pry-byebug
-  pry-nav
   pry-rails
-  pry-remote
   rails (~> 4.2.6)
   ransack
   sass-rails (>= 3.2)
@@ -348,4 +350,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.13.6
+   1.16.0
