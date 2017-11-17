@@ -43,17 +43,17 @@ namespace :link do
       page_url = URI::encode(l.url)
       puts page_url
       page = Nokogiri::HTML(open(page_url))
-      image = page.css('div.articulum > figure > a')
-      video = page.css('script').text.match(/http.*\.mp4/)
-      text = page.css('p#introid').inner_html
+      image = page.css('div.ndArticle_margin > figure > img')
+      video = page.css('div.thoracis').text.match(/http.*\.mp4/)
+      text = page.css('div.ndArticle_margin > p').inner_html
       puts text
       if video
         l.clip = video[0]
       end
       l.detail = text
       photo = Photo.new
-      puts image.attr('href').value
-      photo.remote_file_url = image.attr('href').value
+      puts image.attr('src').value
+      photo.remote_file_url = image.attr('src').value
       l.save
       photo.link_id = l.id
       photo.save
