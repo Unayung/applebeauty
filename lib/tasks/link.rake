@@ -69,7 +69,7 @@ namespace :link do
     
     l = Link.new
     l.url = "https://tw.appledaily.com"+link.css('a').attr('href')
-    l.title = link.css('time').text
+    l.title = link.css('time').text.scan(/(\d+)/).flatten.join('-')
     puts l.title
     page_url = URI::encode(l.url)
     puts page_url
