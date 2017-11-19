@@ -38,7 +38,8 @@ namespace :link do
       apple_url = ENV['url']
       l = Link.new
       l.url = apple_url
-      l.title = ""
+      l.title = ENV['title']
+      l.slug = ENV['title']
       puts l.title
       page_url = URI::encode(l.url)
       puts page_url
