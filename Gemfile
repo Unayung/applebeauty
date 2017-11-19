@@ -53,13 +53,13 @@ gem "compass-rails"
 gem "jquery-fileupload-rails", "= 0.4.0"
 gem "colorbox-rails"
 # end
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'awesome_print', require: false
+gem 'hirb',          require: false
+gem 'hirb-unicode',  require: false
 
 group :development do
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'awesome_print', require: false
-  gem 'hirb',          require: false
-  gem 'hirb-unicode',  require: false
   gem "capistrano"
   gem "capistrano-ext"
   # gem "capistrano-unicorn", :require => false
