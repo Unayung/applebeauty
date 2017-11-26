@@ -44,7 +44,8 @@ namespace :link do
       page_url = URI::encode(l.url)
       puts page_url
       page = Nokogiri::HTML(open(page_url))
-      if page.has_selector?('div.ndAritcle_headPic > img')
+      # binding.pry
+      if page.css('div.ndAritcle_headPic > img').size > 0
         image = page.css('div.ndAritcle_headPic > img')
       else
         image = page.css('div.ndArticle_margin > figure > img')
