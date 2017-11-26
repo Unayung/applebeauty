@@ -44,7 +44,11 @@ namespace :link do
       page_url = URI::encode(l.url)
       puts page_url
       page = Nokogiri::HTML(open(page_url))
-      image = page.css('div.ndArticle_margin > figure > img')
+      if page.has_selector?('div.ndAritcle_headPic > img')
+        image = page.css('div.ndAritcle_headPic > img')
+      else
+        image = page.css('div.ndArticle_margin > figure > img')
+      end
       video = page.css('div.thoracis').text.match(/http.*\.mp4/)
       text = page.css('div.ndArticle_margin > p').inner_html
       puts text
@@ -78,7 +82,12 @@ namespace :link do
       puts "已抓"
     else
       page = Nokogiri::HTML(open(page_url))
-      image = page.css('div.ndAritcle_headPic > img')
+      if page.has_selector?('div.ndAritcle_headPic > img')
+        image = page.css('div.ndAritcle_headPic > img')
+      else
+        image = page.css('div.ndArticle_margin > figure > img')
+      end
+      # image = page.css('div.ndAritcle_headPic > img')
       video = page.css('div.thoracis').text.match(/http.*\.mp4/)
       text = page.css('div.ndArticle_margin > p').inner_html
       puts text
