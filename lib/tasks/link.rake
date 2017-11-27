@@ -83,7 +83,7 @@ namespace :link do
       puts "已抓"
     else
       page = Nokogiri::HTML(open(page_url))
-      if page.has_selector?('div.ndAritcle_headPic > img')
+      if page.css('div.ndAritcle_headPic > img').size > 0
         image = page.css('div.ndAritcle_headPic > img')
       else
         image = page.css('div.ndArticle_margin > figure > img')
