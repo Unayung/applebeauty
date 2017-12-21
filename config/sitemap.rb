@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # Set the host name for URL creation
 
-SitemapGenerator::Sitemap.default_host = "http://ab.unayung.cc"
+SitemapGenerator::Sitemap.default_host = "https://unayung.cc"
 SitemapGenerator::Sitemap.create do
 
   add "/sitemap.xml", :priority => 1, :changefreq => "daily"
