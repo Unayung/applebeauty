@@ -44,11 +44,11 @@ class Link < ActiveRecord::Base
   end
 
   def self.best_of_the_month
-    where("created_at between ? and ? and rate > 5", Date.today.beginning_of_month, Date.today.end_of_month).order("rate DESC").limit(10)
+    where("created_at between ? and ? and rate > 2", Date.today.beginning_of_month, Date.today.end_of_month).order("rate DESC").limit(5)
   end
 
   def self.best_of_the_week
-    where("created_at between ? and ? and rate > 5", Date.today.beginning_of_week, Date.today.end_of_week).order("rate DESC").limit(10)
+    where("created_at between ? and ? and rate > 1", Date.today.beginning_of_week, Date.today.end_of_week).order("rate DESC").limit(5)
   end
 
   def self.worst_of_all

@@ -67,7 +67,7 @@ class LinksController < ApplicationController
   end
 
   def best_of_the_week
-    set_page_title("本週最優")
+    set_page_title("本週精選")
     @links = Link.best_of_the_week
     if @links.empty?
       get_random_link(6)
@@ -75,7 +75,7 @@ class LinksController < ApplicationController
   end
 
   def best_of_the_month
-    set_page_title("本月最優")
+    set_page_title("本月精選")
     @links = Link.best_of_the_month
 
     if @links.empty?
@@ -84,12 +84,12 @@ class LinksController < ApplicationController
   end
 
   def worst_of_all
-    set_page_title("賣鬧專區")
+    set_page_title("不要鬧")
     @links = Link.worst_of_all
   end
 
   def best_of_all
-    set_page_title("累計最優")
+    set_page_title("累計人氣")
     @links = Link.best_of_all
   end
 
