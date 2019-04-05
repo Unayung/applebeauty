@@ -75,6 +75,10 @@ group :development do
   gem 'cape', '~> 1'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard', '~> 1.6.1'
+  gem 'terminal-notifier'
 end
 
 group :production do
@@ -83,7 +87,9 @@ group :production do
   # gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 end
 
-
+group :development, :test do
+  gem 'rspec-rails'
+end
 # To use ActiveModel has_secure_password
 # gem "bcrypt-ruby", "~> 3.0.0"
 
