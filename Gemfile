@@ -79,6 +79,7 @@ group :development do
   gem 'guard-rspec'
   gem 'terminal-notifier-guard', '~> 1.6.1'
   gem 'terminal-notifier'
+  gem 'puma'
 end
 
 group :production do
