@@ -1,7 +1,11 @@
 //= require_self
 //= require common
-//= require jquery.fileupload-ui
 //= require colorbox-rails
+//= require masonry/basic
+//= require masonry/centered
+//= require masonry/fluid
+//= require masonry/gutters
+//= require masonry/transitions
+
 @import "style";
 @import "font-awesome";
-@import "masonry/fluid";

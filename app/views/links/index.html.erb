@@ -1,49 +1,60 @@
 <div class="row">
-  <div class="col-xs-12 masonry-container">
-    <% if @query_string.nil? %>
-      <div class="box grid-item-bigger" style="">
-        <%= link_to(@todays_link) do %>
-          <div class="innerbox" align="center">
-            <span class="label label-info label-large label-title today-label"><%= render_link_title(@todays_link) %></span>
-            <div align="center">
-              <%= image_tag(@todays_link.photos.first.file) %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-    <% @links.each do |link| %>
-      <div class="box grid-item" style="">
-        <%= link_to(link) do %>
-          <div class="innerbox" align="center">
-            <% if link.link_type == "sports" %>
-              <span class="label label-info label-large label-title complained"><%= render_link_title(link) %></span>
-            <% else %>
-              <span class="label label-info label-large label-title"><%= render_link_title(link) %></span>
+  <div class="col-xs-12">
+    <div class="well" align="center">
+      <h2>今日香港，明日台灣</h2>
+      <h2>齊上齊落，香港加油</h2>
+      <h2><%= link_to("一起關心香港反送中", "https://news.google.com/search?q=%E5%8F%8D%E9%80%81%E4%B8%AD&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant") %></h2>
+    </div>
+  </div>
+</div>
+<% if @todays_link.present? %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row transitions-enabled infinite-scroll clearfix has-gutters" id="masonry-container">
+        <% if @query_string.nil? %>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 box todays">
+            <%= link_to(@todays_link) do %>
+              <div class="innerbox" align="center">
+                <span class="label label-info label-large label-title today-label"><%= render_link_title(@todays_link) %></span>
+                <div align="center">
+                  <%= image_tag(@todays_link.photos.first.file) %>
+                </div>
+              </div>
             <% end %>
-            <div align="center">
-            <%= image_tag(link.photos.first.file.tiny) %>
-            </div>
+          </div>
+        <% end %>
+        <% @links.each do |link| %>
+          <div class="box others">
+            <%= link_to(link) do %>
+              <div class="innerbox" align="center">
+                <span class="label label-info label-large label-title"><%= render_link_title(link) %></span>
+                <div align="center">
+                  <%= image_tag(link.photos.first.file.tiny) %>
+                </div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12" align="center">
-    <%= will_paginate @links, renderer: BootstrapPagination::Rails %>
+
+  <div class="row">
+    <div class="col-xs-12" align="center">
+      <%= will_paginate @links, renderer: BootstrapPagination::Rails %>
+    </div>
   </div>
-</div>
+<% end %>
 <%= content_for :javascripts do %>
 <script type="text/javascript">
 $(function(){
-  $('.masonry-container').imagesLoaded(function(){
-    $('.masonry-container').masonry({
-      itemSelector: '.box ',
-      columnWidth: 180
-    });
-  })
+  $('#masonry-container').masonry({
+    itemSelector: '.box',
+    columnWidth: function( containerWidth ) {
+      return containerWidth / 6;
+    },
+    gutterWidth: 0
+  });
 })
 </script>
 <% end %>
