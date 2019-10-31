@@ -38,6 +38,11 @@ class LinksController < ApplicationController
         # @links = Link.recent.reject { |r| r.id == Link.recent.first.id }
         @links = @links.paginate(:per_page => 30, :page => params[:page])
       end
+
+      respond_to do |format|
+        format.html
+        format.rss { render layout: false}
+      end
     end
   end
 
