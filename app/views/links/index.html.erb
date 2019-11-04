@@ -57,7 +57,10 @@ $(function(){
   });
 })
 // alert($( window ).width());
-current_width = $("#masonry-container").width();
-$("#masonry-container").width( current_width - 1).width( current_width + 2);
+
+window.onload = function(){
+  $("#masonry-container").css("width", $("#masonry-container").width() - 1);
+  $("#masonry-container").css("width", $("#masonry-container").width() + 1);
+}
 </script>
 <% end %>
