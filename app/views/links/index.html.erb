@@ -56,6 +56,8 @@ $(function(){
     gutterWidth: 0
   });
 })
-$(window).trigger('resize');
+// alert($( window ).width());
+current_width = $("#masonry-container").width();
+$("#masonry-container").width( current_width - 1).width( current_width + 2);
 </script>
 <% end %>
