@@ -51,7 +51,7 @@ gem "ransack"
 # group :assets do
 gem "compass-rails"
 gem "jquery-fileupload-rails", "= 0.4.0"
-gem "colorbox-rails"
+# gem "colorbox-rails"
 # end
 gem 'pry-rails'
 gem 'pry-byebug'

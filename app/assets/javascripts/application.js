@@ -7,7 +7,6 @@
 //= require masonry/jquery.masonry
 //= require masonry/box-maker
 //= require bootstrap
-//= require colorbox-rails
 
 function dismissAlertAfterTime(timespan) {
   $('.alert').each(function(i, e) {
