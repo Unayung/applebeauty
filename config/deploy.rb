@@ -5,7 +5,7 @@
 # require 'cape'
 # require "capistrano-rbenv"
 
-lock '3.11.0'
+lock '3.11.2'
 set :application, "applebeauty"
 set :repo_url,  "git@github.com:Unayung/applebeauty.git"
 set :conditionally_migrate, true
