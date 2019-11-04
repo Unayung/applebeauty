@@ -59,8 +59,11 @@ $(function(){
 // alert($( window ).width());
 
 window.onload = function(){
-  $("#masonry-container").css("width", $("#masonry-container").width() - 1);
-  $("#masonry-container").css("width", $("#masonry-container").width() + 1);
+  $("#masonry-container").css("width", $("#masonry-container").width() - 50);
+  setTimeout(function(){
+    $("#masonry-container").css("width", $("#masonry-container").width() + 50);
+    $("#masonry-container").resize();
+  },1000); 
 }
 </script>
 <% end %>
