@@ -59,6 +59,9 @@ gem 'awesome_print', require: false
 gem 'hirb',          require: false
 gem 'hirb-unicode',  require: false
 
+gem 'capybara'
+gem 'poltergeist'
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
