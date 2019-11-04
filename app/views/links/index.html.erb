@@ -63,7 +63,8 @@ window.onload = function(){
   setTimeout(function(){
     $("#masonry-container").css("width", $("#masonry-container").width() + 50);
     $("#masonry-container").resize();
-  },1000); 
+  },1000);
+  $('#masonry-container').masonry();
 }
 </script>
 <% end %>
