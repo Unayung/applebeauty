@@ -25,17 +25,24 @@ class LinksController < ApplicationController
 
   def index
 
-    set_page_image(Setting.domain + Link.last.photos.first.file.url) if Link.last.photos.first.file
-    # @links = Link.all
-    # @links = @links.paginate(:page => params[:page], :per_page => 18)
-    if params[:q].present?
-      @query_string = params[:q][:detail_cont]
-      @links = @search.result.recent.paginate(:per_page => 30, :page => params[:page])
-    else
-      @todays_link = Link.recent.first
-      @links = Link.recent.where("id <> ?", Link.recent.first.id)
-      # @links = Link.recent.reject { |r| r.id == Link.recent.first.id }
-      @links = @links.paginate(:per_page => 30, :page => params[:page])
+    if Link.first.present?
+      set_page_image(Setting.domain + Link.last.photos.first.file.url) if Link.last.photos.first.file
+      # @links = Link.all
+      # @links = @links.paginate(:page => params[:page], :per_page => 18)
+      if params[:q].present?
+        @query_string = params[:q][:detail_cont]
+        @links = @search.result.recent.paginate(:per_page => 30, :page => params[:page])
+      else
+        @todays_link = Link.recent.first
+        @links = Link.recent.where("id <> ?", Link.recent.first.id)
+        # @links = Link.recent.reject { |r| r.id == Link.recent.first.id }
+        @links = @links.paginate(:per_page => 30, :page => params[:page])
+      end
+
+      respond_to do |format|
+        format.html
+        format.rss { render layout: false}
+      end
     end
   end
 
@@ -96,7 +103,7 @@ class LinksController < ApplicationController
   def appeal
     set_page_title("上訴專區")
     @links = Link.appeal
-    
+
     if @links.empty?
       get_random_link(3)
     end

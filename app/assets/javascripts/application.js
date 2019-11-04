@@ -5,6 +5,7 @@
 //= require jquery-fileupload
 //= require jquery.onecarousel.min
 //= require masonry/jquery.masonry
+//= require masonry/box-maker
 //= require bootstrap
 //= require colorbox-rails
 

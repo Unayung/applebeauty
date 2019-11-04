@@ -2,16 +2,22 @@
 @import "bootstrap";
 @import "bootstrap-override";
 
-.grid-item { width: 170px; }
-.grid-item-bigger { width: 530px; }
+.todays {
+  left: 15px !important;
+}
+
+.others {
+  margin-left: 20px !important;
+}
+
 .today-label{
   width: 390px;
 }
 
-video {  
-   width:100%; 
-   max-width:800px; 
-   height:auto; 
+video {
+   width:100%;
+   max-width:800px;
+   height:auto;
 }
 
 nav{
