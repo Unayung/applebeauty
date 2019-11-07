@@ -26,6 +26,12 @@ puts @session.all('li a').map(&:text)
 store_link = @session.all('li a').map { |a| a[:href] }[0]
 @session.visit store_link
 @session.save_and_open_screenshot
-
+items = @session.all('ul li ul div a')
+items.each do |i|
+  puts '品名'
+  puts i.find('h4').text
+  puts i.all('div > div > div > div').last.text.gsub('.00', '').gsub('$', '').to_i
+end
+# prices = @session.all('ul ul div a div > div > div > div') #[0].text.gsub('.00', '').gsub('$', '').to_i
 binding.pry
 puts 'Finish!'
