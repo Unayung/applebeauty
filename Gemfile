@@ -61,6 +61,8 @@ gem 'hirb-unicode',  require: false
 
 gem 'capybara'
 gem 'poltergeist'
+gem 'selenium-webdriver'
+gem 'capybara-screenshot'
 
 group :development do
   gem "capistrano"
