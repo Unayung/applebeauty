@@ -22,6 +22,7 @@ module LinksHelper
   end
 
   def render_link_girl_name(link)
+    link.detail = link.detail.gsub('<BR>', '<br>')
     if link.detail.index("暱稱：")
       tmp = link.detail.split("暱稱：").second
     elsif link.detail.index("本名：")
