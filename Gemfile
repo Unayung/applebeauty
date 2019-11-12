@@ -4,7 +4,6 @@ gem 'rails', '~> 4.2.6'
 gem "nokogiri"
 # Bundle edge Rails instead:
 # gem "rails", :git => "git://github.com/rails/rails.git"
-gem 'messenger-bot'
 gem "mysql2"
 
 # gem "flowplayer", "= 0.1.3"
@@ -12,7 +11,6 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem "sitemap_generator"
 # Gems used only for assets and not required
 # in production environments by default.
-
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem "therubyracer", :platforms => :ruby
@@ -41,16 +39,11 @@ gem "bootstrap_helper", ">= 2.1.2"
 gem "simple_form"
 gem "will_paginate"
 gem 'will_paginate-bootstrap'
-
-gem "high_voltage"
-
-# gem "airbrake"
-
 gem "ransack"
 
 # group :assets do
-gem "compass-rails"
-gem "jquery-fileupload-rails", "= 0.4.0"
+gem 'compass-rails', github: 'Compass/compass-rails', branch: '2-0-stable'
+# gem "jquery-fileupload-rails", "= 0.4.0"
 # gem "colorbox-rails"
 # end
 gem 'pry-rails'
@@ -75,7 +68,6 @@ group :development do
   gem 'capistrano-rake'
   gem "magic_encoding"
   gem "annotate"
-  gem "powder"
   gem "guard-livereload"
   gem 'cape', '~> 1'
   gem "better_errors"
