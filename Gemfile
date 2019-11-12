@@ -32,6 +32,7 @@ gem "carrierwave-meta"
 
 gem "settingslogic"
 
+gem 'sass', '3.4.25'
 gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass'
 
@@ -42,7 +43,7 @@ gem 'will_paginate-bootstrap'
 gem "ransack"
 
 # group :assets do
-gem 'compass-rails', github: 'Compass/compass-rails', branch: '2-0-stable'
+# gem 'compass-rails', github: 'Compass/compass-rails', branch: '2-0-stable'
 # gem "jquery-fileupload-rails", "= 0.4.0"
 # gem "colorbox-rails"
 # end

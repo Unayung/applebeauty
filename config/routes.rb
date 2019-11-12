@@ -21,5 +21,4 @@ Applebeauty::Application.routes.draw do
   end
 
   root :to => 'links#index'
-  mount Messenger::Bot::Space => "/webhook"
 end
