@@ -23,6 +23,7 @@ Applebeauty::Application.routes.draw do
   resources :pages do
     collection do
       get "welcome"
+      get "sign_in"
     end
   end
 
