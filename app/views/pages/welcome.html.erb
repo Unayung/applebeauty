@@ -1,3 +1,453 @@
-<div class="col-xs-12">
-	<h1> Welcome </h1>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF Starter</title>
+    <style>
+      html {
+    font-size: 11px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+div {
+    max-width: 100%;
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+img {
+    max-width: 25%;
+    height: auto;
+}
+
+button {
+    margin: 4px;
+}
+
+#code-block {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#profilePictureDiv {
+    text-align: center;
+}
+
+#profileImageDiv {
+    height: 100px;
+    width: 100px;
+}
+
+#statusMessage {
+    position: relative;
+    top: 40px;
+}
+
+.textLeft {
+    text-align: left;
+}
+
+.buttonGroup {
+    position: relative;
+    top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+    </style>
+  </head>
+   <body>
+        <div id="liffAppContent">
+            <!-- ACTION BUTTONS -->
+            <div class="buttonGroup">
+                <div class="buttonRow">
+                    <button id="openWindowButton">Open External Window</button>
+                    <button id="closeWindowButton">Close LIFF App</button>
+                </div>
+                <div class="buttonRow">
+                    <button id="scanQrCodeButton">Open QR Code Reader</button>
+                    <button id="sendMessageButton">Send Message</button>
+                </div>
+                <div class="buttonRow">
+                    <button id="getAccessToken">Get Access Token</button>
+                    <button id="getProfileButton">Get Profile</button>
+                </div>
+            </div>
+            <!-- ACCESS TOKEN DATA -->
+            <div id="accessTokenData" class="hidden textLeft">
+                <h2>Access Token</h2>
+                <a href="#" onclick="toggleAccessToken()">Close Access Token</a>
+                <table>
+                    <tr>
+                        <th>accessToken</th>
+                        <td id="accessTokenField"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- SCAN QR RESULT -->
+            <div id="scanQr" class="hidden textLeft">
+                <h2>QR Code reader</h2>
+                <a href="#" onclick="toggleQRCodeReader()">Close QR Code Reader Result</a>
+                <table>
+                    <tr>
+                        <th>scanCode Result</th>
+                        <td id="scanQrField"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- PROFILE INFO -->
+            <div id="profileInfo" class="hidden textLeft">
+                <h2>Profile</h2>
+                <a href="#" onclick="toggleProfileData()">Close Profile</a>
+                <div id="profilePictureDiv">
+                </div>
+                <table>
+                    <tr>
+                        <th>userId</th>
+                        <td id="userIdProfileField"></td>
+                    </tr>
+                    <tr>
+                        <th>displayName</th>
+                        <td id="displayNameField"></td>
+                    </tr>
+                    <tr>
+                        <th>statusMessage</th>
+                        <td id="statusMessageField"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- LIFF DATA -->
+            <div id="liffData">
+                <h2 id="liffDataHeader" class="textLeft">LIFF Data</h2>
+                <table>
+                    <tr>
+                        <th>OS</th>
+                        <td id="deviceOS" class="textLeft"></td>
+                    </tr>
+                    <tr>
+                        <th>Language</th>
+                        <td id="browserLanguage" class="textLeft"></td>
+                    </tr>
+                    <tr>
+                        <th>LIFF SDK Version</th>
+                        <td id="sdkVersion" class="textLeft"></td>
+                    </tr>
+                    <tr>
+                        <th>isInClient</th>
+                        <td id="isInClient" class="textLeft"></td>
+                    </tr>
+                    <tr>
+                        <th>isLoggedIn</th>
+                        <td id="isLoggedIn" class="textLeft"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- LOGIN LOGOUT BUTTONS -->
+            <div class="buttonGroup">
+                <button id="liffLoginButton">Log in</button>
+                <button id="liffLogoutButton">Log out</button>
+            </div>
+            <div id="statusMessage">
+                <div id="isInClientMessage"></div>
+                <div id="apiReferenceMessage">
+                    <p>Available LIFF methods vary depending on the browser you use to open the LIFF app.</p>
+                    <p>Please refer to the <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference page</a> for more information.</p>
+                </div>
+            </div>
+        </div>
+        <!-- LIFF ID ERROR -->
+        <div id="liffIdErrorMessage" class="hidden">
+            <p>You have not assigned any value for LIFF ID.</p>
+            <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your Heroku account follwing the below steps: </p>
+            <code id="code-block">
+                <ol>
+                    <li>Go to `Dashboard` in your Heroku account.</li>
+                    <li>Click on the app you just created.</li>
+                    <li>Click on `Settings` and toggle `Reveal Config Vars`.</li>
+                    <li>Set `MY_LIFF_ID` as the key and the LIFF ID as the value.</li>
+                    <li>Your app should be up and running. Enter the URL of your app in a web browser.</li>
+                </ol>
+            </code>
+            <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
+            <p>For more information about how to add your LIFF ID, see <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF app</a>.</p>
+        </div>
+        <!-- LIFF INIT ERROR -->
+        <div id="liffInitErrorMessage" class="hidden">
+            <p>Something went wrong with LIFF initialization.</p>
+            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
+        </div>
+        <!-- NODE.JS LIFF ID ERROR -->
+        <div id="nodeLiffIdErrorMessage" class="hidden">
+            <p>Unable to receive the LIFF ID as an environment variable.</p>
+        </div>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+    // Using a Promise object
+    window.onload = function() {
+    const useNodeJS = false;   // if you are not using a node server, set this value to false
+    const defaultLiffId = "1653602980-LYn7ga6e";   // change the default LIFF value if you are not using a node server
+
+    // DO NOT CHANGE THIS
+    let myLiffId = "";
+
+    // if node is used, fetch the environment variable and pass it to the LIFF method
+    // otherwise, pass defaultLiffId
+    if (useNodeJS) {
+        fetch('/send-id')
+            .then(function(reqResponse) {
+                return reqResponse.json();
+            })
+            .then(function(jsonResponse) {
+                myLiffId = jsonResponse.id;
+                initializeLiffOrDie(myLiffId);
+            })
+            .catch(function(error) {
+                document.getElementById("liffAppContent").classList.add('hidden');
+                document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
+            });
+    } else {
+        myLiffId = defaultLiffId;
+        initializeLiffOrDie(myLiffId);
+    }
+};
+
+/**
+* Check if myLiffId is null. If null do not initiate liff.
+* @param {string} myLiffId The LIFF ID of the selected element
+*/
+function initializeLiffOrDie(myLiffId) {
+    if (!myLiffId) {
+        document.getElementById("liffAppContent").classList.add('hidden');
+        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+    } else {
+        initializeLiff(myLiffId);
+    }
+}
+
+/**
+* Initialize LIFF
+* @param {string} myLiffId The LIFF ID of the selected element
+*/
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            // start to use LIFF's api
+            initializeApp();
+        })
+        .catch((err) => {
+            document.getElementById("liffAppContent").classList.add('hidden');
+            document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+        });
+}
+
+/**
+ * Initialize the app by calling functions handling individual app components
+ */
+function initializeApp() {
+    displayLiffData();
+    displayIsInClientInfo();
+    registerButtonHandlers();
+
+    // check if the user is logged in/out, and disable inappropriate button
+    if (liff.isLoggedIn()) {
+        document.getElementById('liffLoginButton').disabled = true;
+    } else {
+        document.getElementById('liffLogoutButton').disabled = true;
+    }
+}
+
+/**
+* Display data generated by invoking LIFF methods
+*/
+function displayLiffData() {
+    document.getElementById('browserLanguage').textContent = liff.getLanguage();
+    document.getElementById('sdkVersion').textContent = liff.getVersion();
+    document.getElementById('isInClient').textContent = liff.isInClient();
+    document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
+    document.getElementById('deviceOS').textContent = liff.getOS();
+}
+
+/**
+* Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
+*/
+function displayIsInClientInfo() {
+    if (liff.isInClient()) {
+        document.getElementById('liffLoginButton').classList.toggle('hidden');
+        document.getElementById('liffLogoutButton').classList.toggle('hidden');
+        document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
+    } else {
+        document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
+    }
+}
+
+/**
+* Register event handlers for the buttons displayed in the app
+*/
+function registerButtonHandlers() {
+    // openWindow call
+    document.getElementById('openWindowButton').addEventListener('click', function() {
+        liff.openWindow({
+            url: 'https://line.me',
+            external: true
+        });
+    });
+
+    // closeWindow call
+    document.getElementById('closeWindowButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.closeWindow();
+        }
+    });
+
+    // sendMessages call
+    document.getElementById('sendMessageButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': "You've successfully sent a message! Hooray!"
+            }]).then(function() {
+                window.alert('Message sent');
+            }).catch(function(error) {
+                window.alert('Error sending message: ' + error);
+            });
+        }
+    });
+
+    // scanCode call
+    document.getElementById('scanQrCodeButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.scanCode().then(result => {
+                // e.g. result = { value: "Hello LIFF app!" }
+                const stringifiedResult = JSON.stringify(result);
+                document.getElementById('scanQrField').textContent = stringifiedResult;
+                toggleQrCodeReader();
+            }).catch(err => {
+                document.getElementById('scanQrField').textContent = "scanCode failed!";
+            });
+        }
+    });
+
+    // get access token
+    document.getElementById('getAccessToken').addEventListener('click', function() {
+        if (!liff.isLoggedIn() && !liff.isInClient()) {
+            alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
+        } else {
+            const accessToken = liff.getAccessToken();
+            document.getElementById('accessTokenField').textContent = accessToken;
+            toggleAccessToken();
+        }
+    });
+
+    // get profile call
+    document.getElementById('getProfileButton').addEventListener('click', function() {
+        liff.getProfile().then(function(profile) {
+            document.getElementById('userIdProfileField').textContent = profile.userId;
+            document.getElementById('displayNameField').textContent = profile.displayName;
+
+            const profilePictureDiv = document.getElementById('profilePictureDiv');
+            if (profilePictureDiv.firstElementChild) {
+                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+            }
+            const img = document.createElement('img');
+            img.src = profile.pictureUrl;
+            img.alt = 'Profile Picture';
+            profilePictureDiv.appendChild(img);
+
+            document.getElementById('statusMessageField').textContent = profile.statusMessage;
+            toggleProfileData();
+        }).catch(function(error) {
+            window.alert('Error getting profile: ' + error);
+        });
+    });
+
+    // login call, only when external browser is used
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+            liff.login();
+        }
+    });
+
+    // logout call only when external browse
+    document.getElementById('liffLogoutButton').addEventListener('click', function() {
+        if (liff.isLoggedIn()) {
+            liff.logout();
+            window.location.reload();
+        }
+    });
+}
+
+/**
+* Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
+*/
+function sendAlertIfNotInClient() {
+    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+}
+
+/**
+* Toggle access token data field
+*/
+function toggleAccessToken() {
+    toggleElement('accessTokenData');
+}
+
+/**
+* Toggle profile info field
+*/
+function toggleProfileData() {
+    toggleElement('profileInfo');
+}
+
+/**
+* Toggle scanCode result field
+*/
+function toggleQrCodeReader() {
+    toggleElement('scanQr');
+}
+
+/**
+* Toggle specified element
+* @param {string} elementId The ID of the selected element
+*/
+function toggleElement(elementId) {
+    const elem = document.getElementById(elementId);
+    if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {
+        elem.style.display = 'none';
+    } else {
+        elem.style.display = 'block';
+    }
+}
+
+    </script>
+  </body>
+</html>

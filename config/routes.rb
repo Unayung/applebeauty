@@ -20,5 +20,11 @@ Applebeauty::Application.routes.draw do
     end
   end
 
+  resources :pages do
+    collection do
+      get "welcome"
+    end
+  end
+
   root :to => 'links#index'
 end
