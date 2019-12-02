@@ -230,7 +230,7 @@ button {
             myLiffId = defaultLiffId;
             initializeLiffOrDie(myLiffId);
             liff.getProfile().then(function(profile) {
-              window.location.replace("./pages/sign_in?liff_uid="+profile.userId+"&name="+profile.displayName)
+              window.location.replace("./sign_in?liff_uid="+profile.userId+"&name="+profile.displayName)
               // alert(profile.userId)
             })
         }

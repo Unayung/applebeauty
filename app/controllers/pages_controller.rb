@@ -11,5 +11,6 @@ class PagesController < ApplicationController
     Rails.logger.info("name: #{name}")
     Rails.logger.info("liff_uid: #{liff_uid}")
     Rails.logger.info("-----")
+    render layout: false
   end
 end
